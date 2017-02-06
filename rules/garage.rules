@@ -1,5 +1,5 @@
 import org.openhab.core.library.types.*
-
+/* 
 var Number GarageOld = 0
 
  
@@ -22,4 +22,4 @@ then
    logInfo("LeseLampe", "Exit")
    GarageOld = receivedCommand
  end
-
+*/

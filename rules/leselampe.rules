@@ -1,6 +1,7 @@
 import org.openhab.core.library.types.*
 
 
+
 rule "LeselampeAuto"
 when
 	Item LichtCouchtisch received update
