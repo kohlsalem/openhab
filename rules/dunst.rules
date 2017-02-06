@@ -1,0 +1,64 @@
+rule "DunstLicht"
+when
+Item DAButLicht received command ON
+then
+  DAButLicht.sendCommand(OFF)
+   
+  DALicht.sendCommand(ON)
+  Thread::sleep(100)
+  DALicht.sendCommand(OFF)
+
+end
+
+rule "DunstPlus"
+when
+Item DAButPlus received command ON
+then
+  DAButPlus.sendCommand(OFF)
+  
+  DAPlusFB.sendCommand(ON)
+  Thread::sleep(100)
+  DAPlusFB.sendCommand(OFF)
+  
+end
+
+rule "DunstMinus"
+when
+Item DAButMinus received command ON
+then
+  DAButMinus.sendCommand(OFF)
+    
+  DAMinusFB.sendCommand(ON)
+  Thread::sleep(100)
+  DAMinusFB.sendCommand(OFF)
+  
+end
+
+rule "DunstAus"
+when
+Item DAButAus received command ON
+then
+  DAButAus.sendCommand(OFF)
+    
+  DAMinusFB.sendCommand(ON)
+  Thread::sleep(100)
+  DAMinusFB.sendCommand(OFF)
+  Thread::sleep(100)
+  
+  DAMinusFB.sendCommand(ON)
+  Thread::sleep(100)
+  DAMinusFB.sendCommand(OFF)
+  Thread::sleep(100)
+  
+  DAMinusFB.sendCommand(ON)
+  Thread::sleep(100)
+  DAMinusFB.sendCommand(OFF)
+  Thread::sleep(100)
+  
+  DAMinusFB.sendCommand(ON)
+  Thread::sleep(100)
+  DAMinusFB.sendCommand(OFF)
+  Thread::sleep(100)
+  
+end
+

@@ -1,0 +1,473 @@
+//harmonyhub:device:HarmonyHub:34545565:buttonPress
+ 
+
+String HarmonyActivity  "Harmmony Aktivität: [%s]" <television> (gMain) { channel="harmonyhub:hub:HarmonyHub:activity" }
+
+String HarmonyFireTV    "FireTv Button" (gMain) { channel="harmonyhub:device:HarmonyHub:34545565:buttonPress" }
+
+String HarmonyReciever    "Reciever Button" (gMain) { channel="harmonyhub:device:HarmonyHub:34545562:buttonPress" }
+
+String HarmonySat    "Reciever Button" (gMain) { channel="harmonyhub:device:HarmonyHub:34545567:buttonPress" }
+
+
+
+/*
+  {
+    "description": "Send a button press to device AV-Receiver",
+      "options": [
+        {
+          "value": "PowerOff",
+          "label": "Power Off"
+        },
+        {
+          "value": "PowerOn",
+          "label": "Power On"
+        },
+        {
+          "value": "Number0",
+          "label": "0"
+        },
+        {
+          "value": "Number1",
+          "label": "1"
+        },
+        {
+          "value": "Number2",
+          "label": "2"
+        },
+        {
+          "value": "Number3",
+          "label": "3"
+        },
+        {
+          "value": "Number4",
+          "label": "4"
+        },
+        {
+          "value": "Number5",
+          "label": "5"
+        },
+        {
+          "value": "Number6",
+          "label": "6"
+        },
+        {
+          "value": "Number7",
+          "label": "7"
+        },
+        {
+          "value": "Number8",
+          "label": "8"
+        },
+        {
+          "value": "Number9",
+          "label": "9"
+        },
+        {
+          "value": "Clear",
+          "label": "Clear"
+        },
+        {
+          "value": "Mute",
+          "label": "Mute"
+        },
+        {
+          "value": "VolumeDown",
+          "label": "Volume Down"
+        },
+        {
+          "value": "VolumeUp",
+          "label": "Volume Up"
+        },
+        {
+          "value": "DirectionDown",
+          "label": "Direction Down"
+        },
+        {
+          "value": "DirectionLeft",
+          "label": "Direction Left"
+        },
+        {
+          "value": "DirectionRight",
+          "label": "Direction Right"
+        },
+        {
+          "value": "DirectionUp",
+          "label": "Direction Up"
+        },
+        {
+          "value": "Select",
+          "label": "Select"
+        },
+        {
+          "value": "PrevPreset",
+          "label": "Prev Preset"
+        },
+        {
+          "value": "ScanDown",
+          "label": "Scan Down"
+        },
+        {
+          "value": "ScanUp",
+          "label": "Scan Up"
+        },
+        {
+          "value": "NextPreset",
+          "label": "Next Preset"
+        },
+        {
+          "value": "DirectTune",
+          "label": "Direct Tune"
+        },
+        {
+          "value": "Sleep",
+          "label": "Sleep"
+        },
+        {
+          "value": "Display",
+          "label": "Display"
+        },
+        {
+          "value": "ChannelSelect",
+          "label": "ChannelSelect"
+        },
+        {
+          "value": "Delay",
+          "label": "Delay"
+        },
+        {
+          "value": "Digital",
+          "label": "Digital"
+        },
+        {
+          "value": "Dim",
+          "label": "Dim"
+        },
+        {
+          "value": "DiscSkip",
+          "label": "DiscSkip"
+        },
+        {
+          "value": "Input6/8Ch",
+          "label": "Input6/8Ch"
+        },
+        {
+          "value": "InputCd",
+          "label": "InputCd"
+        },
+        {
+          "value": "InputDvd",
+          "label": "InputDvd"
+        },
+        {
+          "value": "InputTape",
+          "label": "InputTape"
+        },
+        {
+          "value": "InputTuner",
+          "label": "InputTuner"
+        },
+        {
+          "value": "InputVideo1",
+          "label": "InputVideo1"
+        },
+        {
+          "value": "InputVideo2",
+          "label": "InputVideo2"
+        },
+        {
+          "value": "InputVideo3",
+          "label": "InputVideo3"
+        },
+        {
+          "value": "InputVideo4",
+          "label": "InputVideo4"
+        },
+        {
+          "value": "Memory",
+          "label": "Memory"
+        },
+        {
+          "value": "Night",
+          "label": "Night"
+        },
+        {
+          "value": "Speaker",
+          "label": "Speaker"
+        },
+        {
+          "value": "SurrModeDolby",
+          "label": "SurrModeDolby"
+        },
+        {
+          "value": "SurrModeDTS",
+          "label": "SurrModeDTS"
+        },
+        {
+          "value": "SurrModeLogic7",
+          "label": "SurrModeLogic7"
+        },
+        {
+          "value": "SurrModeNeo",
+          "label": "SurrModeNeo"
+        },
+        {
+          "value": "SurrModeStereo",
+          "label": "SurrModeStereo"
+        },
+        {
+          "value": "Surround",
+          "label": "Surround"
+        },
+        {
+          "value": "Test",
+          "label": "Test"
+        },
+        {
+          "value": "TunerMode",
+          "label": "TunerMode"
+        }
+      ]
+    },
+    "UID": "harmonyhub:device:HarmonyHub:34545562:buttonPress"
+  },
+  
+  
+  {
+    "description": "Send a button press to device Megasat HD935Twin",
+    "stateDescription": {
+      "options": [
+        {
+          "value": "PowerToggle",
+          "label": "Power Toggle"
+        },
+        {
+          "value": "Greater100",
+          "label": "Greater 100"
+        },
+        {
+          "value": "Number0",
+          "label": "0"
+        },
+        {
+          "value": "Number1",
+          "label": "1"
+        },
+        {
+          "value": "Number2",
+          "label": "2"
+        },
+        {
+          "value": "Number3",
+          "label": "3"
+        },
+        {
+          "value": "Number4",
+          "label": "4"
+        },
+        {
+          "value": "Number5",
+          "label": "5"
+        },
+        {
+          "value": "Number6",
+          "label": "6"
+        },
+        {
+          "value": "Number7",
+          "label": "7"
+        },
+        {
+          "value": "Number8",
+          "label": "8"
+        },
+        {
+          "value": "Number9",
+          "label": "9"
+        },
+        {
+          "value": "Mute",
+          "label": "Mute"
+        },
+        {
+          "value": "VolumeDown",
+          "label": "Volume Down"
+        },
+        {
+          "value": "VolumeUp",
+          "label": "Volume Up"
+        },
+        {
+          "value": "PrevChannel",
+          "label": "Prev Channel"
+        },
+        {
+          "value": "ChannelDown",
+          "label": "Channel Down"
+        },
+        {
+          "value": "ChannelUp",
+          "label": "Channel Up"
+        },
+        {
+          "value": "Select",
+          "label": "Select"
+        },
+        {
+          "value": "Menu",
+          "label": "Menu"
+        },
+        {
+          "value": "PipSwap",
+          "label": "Pip Swap"
+        },
+        {
+          "value": "PipToggle",
+          "label": "Pip Toggle"
+        },
+        {
+          "value": "Setup",
+          "label": "Setup"
+        },
+        {
+          "value": "Sleep",
+          "label": "Sleep"
+        },
+        {
+          "value": "Guide",
+          "label": "Guide"
+        },
+        {
+          "value": "Info",
+          "label": "Info"
+        },
+        {
+          "value": "Exit",
+          "label": "Exit"
+        },
+        {
+          "value": "ClosedCaption",
+          "label": "ClosedCaption"
+        },
+        {
+          "value": "InputNext",
+          "label": "InputNext"
+        },
+        {
+          "value": "InputTv",
+          "label": "InputTv"
+        },
+        {
+          "value": "MTS",
+          "label": "MTS"
+        },
+        {
+          "value": "Picture",
+          "label": "Picture"
+        },
+        {
+          "value": "PipSound",
+          "label": "PipSound"
+        },
+        {
+          "value": "Sound",
+          "label": "Sound"
+        },
+        {
+          "value": "V-Chip",
+          "label": "V-Chip"
+        }
+      ]
+    },
+    "UID": "harmonyhub:device:HarmonyHub:34545567:buttonPress"
+  },
+  
+  {
+    "parameters": [],
+    "parameterGroups": [],
+    "description": "Send a button press to device Amazon Fire TV",
+    "label": "Send Button Press",
+    "itemType": "String",
+    "kind": "STATE",
+    "stateDescription": {
+      "readOnly": false,
+      "options": [
+        {
+          "value": "DirectionDown",
+          "label": "Direction Down"
+        },
+        {
+          "value": "DirectionLeft",
+          "label": "Direction Left"
+        },
+        {
+          "value": "DirectionRight",
+          "label": "Direction Right"
+        },
+        {
+          "value": "DirectionUp",
+          "label": "Direction Up"
+        },
+        {
+          "value": "Select",
+          "label": "Select"
+        },
+        {
+          "value": "Stop",
+          "label": "Stop"
+        },
+        {
+          "value": "Play",
+          "label": "Play"
+        },
+        {
+          "value": "Rewind",
+          "label": "Rewind"
+        },
+        {
+          "value": "Pause",
+          "label": "Pause"
+        },
+        {
+          "value": "FastForward",
+          "label": "Fast Forward"
+        },
+        {
+          "value": "SkipBackward",
+          "label": "Skip Backward"
+        },
+        {
+          "value": "SkipForward",
+          "label": "Skip Forward"
+        },
+        {
+          "value": "Menu",
+          "label": "Menu"
+        },
+        {
+          "value": "Back",
+          "label": "Back"
+        },
+        {
+          "value": "Search",
+          "label": "Search"
+        },
+        {
+          "value": "Exit",
+          "label": "Exit"
+        },
+        {
+          "value": "Delete",
+          "label": "Backspace"
+        },
+        {
+          "value": "Home",
+          "label": "Home"
+        }
+      ]
+    },
+    "tags": [],
+    "UID": "harmonyhub:device:HarmonyHub:34545565:buttonPress"
+  },
+
+*/

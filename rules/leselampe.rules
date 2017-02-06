@@ -1,0 +1,50 @@
+import org.openhab.core.library.types.*
+
+
+rule "LeselampeAuto"
+when
+	Item LichtCouchtisch received update
+then
+  logInfo("LeseLampe", "LeselampeAuto: Entering Rule")
+  
+  if( LichtButLeselampe.state != null && 
+      LichtLeselampe.state != null ){   
+     
+    logDebug("LeseLampe", "LeselampeAuto: Leselampe in {} mode",LichtButLeselampe.state) 
+  
+    if(LichtButLeselampe.state == "AUTO"){
+ 
+      val l = (LichtCouchtisch.state as DecimalType).intValue
+    
+      logDebug("LeseLampe", "LeselampeAuto: Couchtisch state: {} ", l ) 
+    
+      if( ( l > 1 ) && ( l < 90 )){
+        logDebug("LeseLampe", "LeselampeAuto: Sending ON") 
+        LichtLeselampe.sendCommand(ON)
+      } else {
+        logDebug("LeseLampe", "LeselampeAuto: Sending OFF")  
+        LichtLeselampe.sendCommand(OFF)
+      }
+    } 
+  }   
+end
+
+
+rule "LeselampeSet"
+when
+  Item LichtButLeselampe received command 
+then
+   logInfo("LeseLampe", "LeselampeSet: Entering Rule")
+   if( receivedCommand.toString == "ON" || receivedCommand.toString == "OFF"){
+     LichtLeselampe.sendCommand(receivedCommand.toString)
+   }
+end
+
+rule "LeselampeInit"
+when
+   System started
+then
+  logInfo("LeseLampe", "LeselampeInit: Entering Rule")
+//  postUpdate(LichtButLeselampe,"AUTO")
+  LichtButLeselampe.sendCommand("AUTO")
+end

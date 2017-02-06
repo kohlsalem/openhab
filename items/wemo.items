@@ -1,0 +1,6 @@
+Switch LichtLeselampe "Wandlampe" <light> [ "Lighting" ] { channel="wemo:socket:Socket-1_0-221517K1100004:state" }	
+String LichtButLeselampe "Wandlampe" <light> [ "Lighting" ]
+
+
+
+ 

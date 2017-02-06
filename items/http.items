@@ -1,0 +1,45 @@
+String Hoermann "Garagentor [MAP(garage.map):%s]" <garagedoor> {http=">[DOOPEN:GET:http://192.168.178.47/open] >[DOCLOSE:GET:http://192.168.178.47/close]"}
+
+
+String LichtButLed "Led Streifen" <light> [ "Lighting" ]
+
+Dimmer Candle "Kerzen [%d]" <fire> {http="<[http://candle:60000:JSONPATH($.b)] >[*:GET:http://candle/?b=%2$s] >[ON:GET:http://candle/?b=100] >[OFF:GET: http://candle/?b=0]"}
+
+Dimmer LedCouch "Led Couch [%d]" [ "Lighting" ] {http="<[http://ledcouch:60000:JSONPATH($.b)] >[*:GET:http://ledcouch/?b=%2$s] >[ON:GET:http://ledcouch/?b=100] >[OFF:GET: http://ledcouch/?b=0]"}
+
+Dimmer LedTheke "Led Theke [%d]" [ "Lighting" ] {http="<[http://ledtheke:60000:JSONPATH($.b)] >[*:GET:http://ledtheke/?b=%2$s] >[ON:GET:http://ledtheke/?b=100] >[OFF:GET: http://ledtheke/?b=0]"}
+
+// "WZSL": 10001 "name": "WZ Süd Links",        
+// "WZSR": 10002 "name": "WZ Süd Rechts",
+// "WZSML: 10004 "name": "WZ Süd Mitte Links",
+// "WZSMR: 10005 "name": "WZ Süd Mitte Rechts",
+// "WZWR": 10006 "name": "WZ West Rechts",
+// "WZWL": 10007 "name": "WZ West Links",
+// "SZR": 10008 "name": "SZ Rechts", 
+// "SZL": 10009 "name": "SZ Links",
+// "SZA": 10010 "name": "SZ Alex",
+
+//Rollershutter RollladenWZSL "Süd Links" {http="<[homepilotCache:20000:JSONPATH($.devices[?(@.did==10001)].position.max())] >[*:GET:http://homepilot/rest2/Index?do=/devices/10001?do=use&cmd=9&pos=%2$s]"} 
+
+Rollershutter RollladenWZSL "Süd Links" {http="<[homepilotCache:20000:JS(10001.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10001?do=use&cmd=9&pos=%2$s]"} 
+
+
+Rollershutter RollladenWZSR "Süd Rechts" {http="<[homepilotCache:20000:JS(10002.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10002?do=use&cmd=9&pos=%2$s]"}
+
+Rollershutter RollladenWZSML "Süd Mitte Links" {http="<[homepilotCache:20000:JS(10004.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10004?do=use&cmd=9&pos=%2$s]"}
+
+Rollershutter RollladenWZSMR "Süd Mitte Rechts" {http="<[homepilotCache:20000:JS(10005.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10005?do=use&cmd=9&pos=%2$s]"}
+
+Rollershutter RollladenWZWR "West Rechts" {http="<[homepilotCache:20000:JS(10006.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10006?do=use&cmd=9&pos=%2$s]"}
+
+Rollershutter RollladenWZWL "West Links" {http="<[homepilotCache:20000:JS(10007.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10007?do=use&cmd=9&pos=%2$s]"}
+
+Rollershutter RollladenSZR "Schlafzimmer Rechts" {http="<[homepilotCache:20000:JS(10008.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10008?do=use&cmd=9&pos=%2$s]"}
+
+Rollershutter RollladenSZL "Schlafzimmer Links" {http="<[homepilotCache:20000:JS(10009.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10009?do=use&cmd=9&pos=%2$s]"}
+
+Rollershutter RollladenSZA "Schlafzimmer Alex" {http="<[homepilotCache:20000:JS(10010.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10010?do=use&cmd=9&pos=%2$s]"}
+
+ /*
+Number RollladenWZWL_Value "WZWL [%d]" {http="<[homepilotCache:10000:JSONPATH($.devices[?(@.did==10006)].position)]"}*/
+

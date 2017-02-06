@@ -1,0 +1,9 @@
+OPEN=Tor Offen
+DOOPEN=Sende oeffnen
+CLOSING=Tor Schliesst
+RETRY=Neuer Schliessversuch
+ERROR=Fehler Torsteuerung
+CLOSED=Tor Geschlossen
+OPENING=Tor oeffnet
+DOCLOSE=Sende Schliessen
+-=Kommunikationsfehler?

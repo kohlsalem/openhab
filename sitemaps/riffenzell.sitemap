@@ -1,0 +1,104 @@
+sitemap riffenzell label="Riffenzell" {
+   	
+    Frame label="Wohnzimmer" {
+        Slider item=LichtCouchtisch 
+        Slider item=LichtEsstisch 
+        Switch item=LichtKeller
+        Switch item=Insektenlampe 
+        Switch item=LichtWohnzimmer
+//        Switch item=LichtLeselampe
+        Switch item=LichtButLeselampe mappings=[ON="An", OFF="Aus", AUTO = "Automatic"] 	
+        Switch item=LichtButLed mappings=[ON="An", OFF="Aus", AUTO = "Automatic"] 	
+        Group  label="Sonstige" {
+           Slider item=Candle
+           Slider item=LedCouch
+           Slider item=LedTheke
+//           Colorpicker item=Candle
+        }
+        Group  label="Rollläden" {
+           Slider item=RollladenWZWR
+           Slider item=RollladenWZWL
+           Slider item=RollladenWZSR
+           Slider item=RollladenWZSMR
+           Slider item=RollladenWZSML
+           Slider item=RollladenWZSL
+        }
+         Group  label="Heizung" {
+            Setpoint item=ThermostatWohnzimmerSetPoint 
+            Text item=ThermostatWohnzimmerActual   
+        
+            Text item=HKWohnzimmerSetPoint
+            Text item=HKTreppeSetPoint
+            Text item=HKWohnzimmerActual
+            Text item=HKTreppeActual
+            Text item=HKTreppeLevel
+            Text item=HKWohnzimmerLevel
+            
+            Switch item=PartyMode      
+            Setpoint item=PartySetPoint  
+            Text item=PartyTimeStart 
+            Text item=PartyTimeEnd   
+
+            
+         //  Setpoint item=HKTreppeSetPoint step=0.5 minValue=15 maxValue=30
+         //  Setpoint item=HKTreppeSetPoint step=0.5 minValue=15 maxValue=30
+           
+            
+           
+          // Text     item=homematic_HMIP_eTRV_a8faecaa_000393C98D0CEC_1_ACTUAL_TEMPERATURE  label="Isttemperatur [%.1f °C]"
+          // Text   item=homematic_HMIP_eTRV_a8faecaa_000393C98D0CEC_1_LEVEL  label="Level [%.0f %%]"
+          // Setpoint item=homematic_HMIP_eTRV_a8faecaa_000393C98D0CEC_1_SET_POINT_TEMPERATURE label="Sollteperatur [%.1f °C]" step=1 minValue=15 maxValue=30
+          // Text     item=homematic_HMIP_eTRV_a8faecaa_000393C98D0CEC_1_VALVE_STATE label="Level [%s]"
+           
+        }
+        
+        Text item=TerrasseSued  
+        Text item=TerrasseWest  
+    }
+
+    Frame label="Küche" {
+        Switch item=LichtKueche 
+        
+        Group  label="Dunstabzug" icon="fan"{
+        	Switch item=DAButLicht mappings=[ON="Licht"]
+        	Switch item=DAButPlus  mappings=[ON="+"]
+        	Switch item=DAButMinus mappings=[ON="-"]
+        	Switch item=DAButAus   mappings=[ON="Aus"]
+       }
+    }
+    Frame label="Obere Zimmer" {
+        Switch item=LichtJohanna
+        Slider item=LichtAlex 
+        Switch item=LichtFlur
+        Switch item=LichtArbeitszimmer
+        Switch item=LichtSpielzimmer    
+        Group  label="Rollläden" {
+           Slider item=RollladenSZR
+           Slider item=RollladenSZL
+           Slider item=RollladenSZA
+        }
+    }
+    
+    Frame label="Harmony" {
+        Selection item=HarmonyActivity mappings=[PowerOff="Aus", "Fern-sehen"="Fernsehen", "Fire Tv"="Fire Tv", "Blueray Video"="Blueray Video", "Fire TV Audio"="Fire TV Audio"]
+        Switch item=HarmonyReciever icon="soundvolume" label="Volume" visibility=[HarmonyActivity!=PowerOff ] mappings=[ VolumeDown="-", VolumeUp="+", Mute="M"]
+  //      Switch item=HarmonySat mappings=[CHANNELDOWN="Ch-", CHANNELUP="Ch+"]
+  
+        Switch item=HarmonyFireTV icon="movecontrol" label="Fire Tv" visibility=[HarmonyActivity=="Fire Tv" ] mappings=[DirectionUp="/\\", DirectionDown="\\/", DirectionLeft="<", DirectionRight=">"]
+        Switch item=HarmonyFireTV icon="movecontrol" label="Fire Tv" visibility=[HarmonyActivity=="Fire Tv" ] mappings=[ Home="Home", Back="Back", Ok="Ok"]
+        
+  
+              
+    }    
+    Frame label="Garten" {
+    	Switch item=GartenSpotlight
+    	Switch item=GartenPumpe
+    	Switch item=GartenUplights
+    	Switch item=GartenFlutlicht
+    	Text item=Sunrise_Time
+    	Text item=Sunset_Time
+    	Switch item=Hoermann  mappings=[DOOPEN="/\\", DOCLOSE="\\/"]
+    	Text item=Hoermann
+    
+    }       
+}

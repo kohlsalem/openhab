@@ -1,0 +1,62 @@
+import org.openhab.core.library.types.*
+
+
+
+rule "LEDStripesAuto"
+when
+	Item LichtCouchtisch received update or
+	Item LichtEsstisch received update
+	
+then
+  logInfo("LEDStripes", "LEDStripesAuto: Entering Rule")
+  
+  if( LichtButLed.state != null && 
+      LichtCouchtisch.state != null &&
+      LichtEsstisch.state != null
+      ){   
+    
+    logDebug("LEDStripes", "LEDStripesAuto: LEDStripes in {} mode",LichtButLed.state) 
+  
+    if(LichtButLed.state == "AUTO"){
+ 
+      val l = (LichtCouchtisch.state as DecimalType).intValue + (LichtEsstisch.state as DecimalType).intValue
+    
+      logDebug("LEDStripes", "LEDStripesAuto: Couchtisch plus Esstisch is: {} ", l ) 
+    
+      if(  l > 0 ){
+        logDebug("LEDStripes", "LEDStripesAuto: Sending ON") 
+        Candle.sendCommand(ON)
+        LedCouch.sendCommand(ON)    
+        LedTheke.sendCommand(ON)       
+        
+      } else {
+        logDebug("LEDStripes", "LEDStripesAuto: Sending OFF")  
+        Candle.sendCommand(OFF)
+        LedCouch.sendCommand(OFF)    
+        LedTheke.sendCommand(OFF)   
+      }
+    } 
+  }   
+end
+
+
+rule "LEDStripesSet"
+when
+  Item LichtButLed received command 
+then
+   logInfo("LEDStripes", "LEDStripesSet: Entering Rule LEDStripesSet")
+   if( receivedCommand.toString == "ON" || receivedCommand.toString == "OFF"){
+     Candle.sendCommand(receivedCommand.toString)
+     LedCouch.sendCommand(receivedCommand.toString)    
+     LedTheke.sendCommand(receivedCommand.toString)     
+   }
+end
+
+rule "LEDStripesInit"
+when
+   System started
+then
+  logInfo("LEDStripes", "LEDStripesInit: Entering Rule")
+//  postUpdate(LichtButLed,"AUTO")
+  LichtButLed.sendCommand("AUTO")
+end
