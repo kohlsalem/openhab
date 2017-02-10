@@ -2,6 +2,7 @@ import org.openhab.core.library.types.*
 
 var Number oldStateTTWest = 0
 var Number oldStateTTSued = 0
+var Timer spotTimer = null  
 
 rule "TUplightsOn"
 when 
@@ -21,8 +22,36 @@ then
   } else
   {
   	GartenUplights.sendCommand( "OFF" )
-  }
+  }  
+end
+
+rule "Spotlights"
+when 
+   Item RollladenWZWR changed
+or 
+   Item RollladenWZWL changed
+or
+   Item Sun_Elevation  received update
+then
+  logInfo("Tuer", "Spotlights: Entering Rule")
+  val elevation = (Sun_Elevation.state as DecimalType).intValue
+  val positionWL = (RollladenWZWL.state as DecimalType).intValue
+  val positionWR = (RollladenWZWR.state as DecimalType).intValue
   
+  if ((positionWL<70) && 
+  	  (positionWR<70) &&
+  	  (elevation<0)){
+  	  	
+       GartenSpotlight.sendCommand(ON)
+       spotTimer = createTimer(now.plusHours(6)) [|
+          GartenSpotlight.sendCommand(OFF)
+          spotTimer = null   // reset the timer
+       ] 	
+  	  	
+  } else  {
+  	GartenSpotlight.sendCommand(OFF)
+  } 
+   
 end
 
 rule "TTWestOpen"

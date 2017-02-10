@@ -31,6 +31,20 @@ then
 end
 
 
+rule "LeselampeToggle"
+when
+  Item WZTaster2S received update ON
+then
+   logInfo("LeseLampe", "LeselampeToggle: Entering Rule")
+   
+    if (LichtLeselampe.state==ON)
+      { LichtLeselampe.sendCommand(OFF) }
+   
+   if (LichtLeselampe.state==ON)
+      { LichtLeselampe.sendCommand(OFF) }
+end
+
+
 rule "LeselampeSet"
 when
   Item LichtButLeselampe received command 

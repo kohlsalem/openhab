@@ -1,4 +1,9 @@
 
+
+Switch WZTaster2S "Taster Leselampe"  {homematic="homematic:HM-PB-6-WM55:a8faecaa:NEQ0104690:2#PRESS_SHORT"}
+Switch WZTaster2L "Taster Leselampe Long"  {homematic="homematic:HM-PB-6-WM55:a8faecaa:NEQ0104690:2#PRESS_LONG"}
+
+	
 Dimmer  LichtCouchtisch "Sofa [%d %%]" [ "Lighting" ] { channel="homematic:HM-LC-Dim1TPBU-FM:a8faecaa:MEQ0168594:1#LEVEL" }
 
 Dimmer  LichtEsstisch "Esstisch [%d %%]"  [ "Lighting" ]   { channel="homematic:HM-LC-Dim1TPBU-FM:a8faecaa:MEQ0169187:1#LEVEL" }
