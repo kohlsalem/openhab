@@ -1,0 +1,109 @@
+import org.openhab.core.library.types.*
+
+var Number oldStateTTWest = 0
+var Number oldStateTTSued = 0
+
+rule "TUplightsOn"
+when 
+   Item TerrasseWest  received update 
+or
+   Item Sun_Elevation  received update
+then   
+  logInfo("Tuer", "TUplightsOn: Entering Rule")
+  val elevation = (Sun_Elevation.state as DecimalType).intValue
+  
+  logDebug("Tuer", "TUplightsOn: Door: {} Elevation: {}",TerrasseWest.state, elevation)
+  
+  if(( TerrasseWest.state == "OPEN" ) &&  
+  	 ( elevation < 0)){
+  	 	
+    GartenUplights.sendCommand( "ON" )
+  } else
+  {
+  	GartenUplights.sendCommand( "OFF" )
+  }
+  
+end
+
+rule "TTWestOpen"
+when 
+  Item TerrasseWest changed from CLOSED to OPEN
+then
+  logInfo("Tuer", "TTWestOpen: Entering Rule")
+ 
+  // get the JSON of the door only - i want to see the state NOW, not the polled one which could be outdated
+  var String json = sendHttpGetRequest("http://homepilot/deviceajax.do?device=10006")
+  var Number position = Integer::parseInt(transform("JSONPATH", "$.device.position", json))
+  logDebug("Tuer", "TTWestOpen: Shutter at {}", position)
+  
+  oldStateTTWest = position; // save last position
+  
+  if(position>30){ // ignore "sunshade" positions
+     logDebug("Tuer", "TTWestOpen: Open Shutter")
+    RollladenWZWR.send(new PercentType(0)) // open rolershutter   	   
+  } 
+end  
+rule "TTWestClose"
+when 
+  Item TerrasseWest changed from OPEN to CLOSED
+then
+  logInfo("Tuer", "TTWestClose: Entering Rule")
+  logDebug("Tuer", "TTWestClose: Restoring Shutter to {} ",oldStateTTWest)
+  RollladenWZWR.send(new PercentType(oldStateTTWest.intValue))
+end
+rule "TTWestSecurity"
+when 
+  Item RollladenWZWR changed
+then
+  logInfo("Tuer", "TTWestSecurity: Entering Rule")
+  if( TerrasseWest.state == "OPEN" ){
+	  val position = (RollladenWZWR.state as DecimalType).intValue
+	  logDebug("Tuer", "TTWestSecurity: Shutter at {}", position)	  
+	    if(position>30){ // ignore "sunshade" positions
+	     logDebug("Tuer", "TTWestSecurity: Open Shutter")
+	    RollladenWZWR.send(new PercentType(0)) // open rolershutter   	   
+	  }
+  }
+end
+
+
+rule "TTSuedOpen"
+when 
+  Item TerrasseSued changed from CLOSED to OPEN
+then
+  logInfo("Tuer", "TTSuedOpen: Entering Rule")
+ 
+  // get the JSON of the door only - i want to see the state NOW, not the polled one which could be outdated
+  var String json = sendHttpGetRequest("http://homepilot/deviceajax.do?device=10005")
+  var Number position = Integer::parseInt(transform("JSONPATH", "$.device.position", json))
+  logDebug("Tuer", "TTSuedOpen: Shutter at {}", position)
+  
+  oldStateTTSued = position; // save last position
+  
+  if(position>30){ // ignore "sunshade" positions
+     logDebug("Tuer", "TTSuedOpen: Open Shutter")
+    RollladenWZSMR.send(new PercentType(0)) // open rolershutter   	   
+  } 
+end  
+rule "TTSuedClose"
+when 
+  Item TerrasseSued changed from OPEN to CLOSED
+then
+  logInfo("Tuer", "TTSuedClose: Entering Rule")
+  logDebug("Tuer", "TTSuedClose: Restoring Shutter to {} ",oldStateTTSued)
+  RollladenWZSMR.send(new PercentType(oldStateTTSued.intValue))
+end
+rule "TTSuedSecurity"
+when 
+  Item RollladenWZWR changed
+then
+  logInfo("Tuer", "TTSuedSecurity: Entering Rule")
+  if( TerrasseSued.state == "OPEN" ){
+	  val position = (RollladenWZSMR.state as DecimalType).intValue
+	  logDebug("Tuer", "TTSuedSecurity: Shutter at {}", position)	  
+	    if(position>30){ // ignore "sunshade" positions
+	     logDebug("Tuer", "TTSuedSecurity: Open Shutter")
+	    RollladenWZSMR.send(new PercentType(0)) // open rolershutter   	   
+	  }
+  }
+end
