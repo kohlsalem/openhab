@@ -2,4 +2,3 @@ DateTime Sunrise_Time  "Sunrise [%1$tH:%1$tM]"  <sunrise> { channel="astro:sun:l
 DateTime Sunset_Time   "Sunset [%1$tH:%1$tM]"  <sunset> { channel="astro:sun:local:set#start" }
 Number   Sun_Azimuth       "Azimuth"                { channel="astro:sun:local:position#azimuth" }
 Number   Sun_Elevation     "Elevation"              { channel="astro:sun:local:position#elevation" }
-String   MoonPhase     "MoonPhase"              { channel="astro:moon:local:phase#name" }

@@ -6,6 +6,7 @@ sitemap riffenzell label="Riffenzell" {
         Switch item=LichtKeller
         Switch item=Insektenlampe 
         Switch item=LichtWohnzimmer
+        Switch item=LichtEingang
 //        Switch item=LichtLeselampe
         Switch item=LichtButLeselampe mappings=[ON="An", OFF="Aus", AUTO = "Automatic"] 	
         Switch item=LichtButLed mappings=[ON="An", OFF="Aus", AUTO = "Automatic"] 	

@@ -3,7 +3,10 @@ Dimmer  LichtCouchtisch "Sofa [%d %%]" [ "Lighting" ] { channel="homematic:HM-LC
 
 Dimmer  LichtEsstisch "Esstisch [%d %%]"  [ "Lighting" ]   { channel="homematic:HM-LC-Dim1TPBU-FM:a8faecaa:MEQ0169187:1#LEVEL" }
 
+
 Switch  LichtKueche  "Küche"  <light>  [ "Lighting" ] { channel="homematic:HM-LC-Sw1PBU-FM:a8faecaa:MEQ0988180:1#STATE" }
+
+Switch  LichtEingang  "Eingang"  <light>  [ "Lighting" ] { channel="homematic:HmIP-BSM:a8faecaa:000855699C4B85:4#STATE" }
 
 Switch  DALicht  "Dunstabzug Licht" <light> { channel="homematic:HM-LC-Sw4-WM:a8faecaa:MEQ0498690:1#STATE"  }
 Switch  DAButLicht "Dunstabzug" <light>
