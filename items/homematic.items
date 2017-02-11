@@ -1,5 +1,7 @@
 
 
+Switch  Sunshade "Rollanden Sonnenschutz" 
+
 Switch WZTaster2S "Taster Leselampe"  {homematic="homematic:HM-PB-6-WM55:a8faecaa:NEQ0104690:2#PRESS_SHORT"}
 Switch WZTaster2L "Taster Leselampe Long"  {homematic="homematic:HM-PB-6-WM55:a8faecaa:NEQ0104690:2#PRESS_LONG"}
 

@@ -1,0 +1,46 @@
+import org.openhab.core.library.types.*
+/*
+ 
+Bedingung: Wenn...
+sonne_azimut im Wertebereich von 190.00 grad bis kleiner 290.00 grad   
+UND
+ sonne_elevation im Wertebereich größer oder gleich 11.00 grad   
+UND
+ Sonnensensor im Wertebereich größer als 2.50 Grad Celsius   
+UND
+ Periodisch von 18:00 Uhr beginnend am 26.06.2016    
+*/
+
+/* */
+   var Number Fenster_Glashoehe = 205 //cm
+   var Number Fensterbank_Hoehe = 0   //cm
+   var Number Schatten_Abstand  = 210 //cm
+   var Number Schatten_Hoehe    = 75  //cm
+   var Number Behang_Unten	    = 20  //cm 
+
+rule "FollowTheSun"
+when
+  Item Sun_Elevation changed
+then
+	var elevation = (Sun_Elevation.state as DecimalType).floatValue 
+	var azimuth = (Sun_Azimuth.state as DecimalType).floatValue 
+	if ( (azimuth>190)&&(azimuth<290)&&(elevation>11)&&(now.getHourOfDay >= 18)&&(Sunshade.state==ON)){
+		var phi = 0.017453292 * elevation  //umwandeln in bogenmass
+		//####### sin_phi und cos_phi mit taylorreihe berechnen
+		var  temp = phi * phi
+		var  sin_phi = phi * ((temp * temp * 0.0083334) +1.0 - (temp * 0.1666667)) // sinus-naeherung
+		var  cos_phi = (temp *temp *0.0416667)  + 1.0 - (temp * 0.5)               // cosinus-naeherung
+		var  tan_phi = sin_phi/cos_phi 
+		//####### Beschattung in cm 
+		var BehangCm = ((Fenster_Glashoehe - (tan_phi * Schatten_Abstand)) - Schatten_Hoehe)+ Fensterbank_Hoehe
+		//WriteLine(BehangCm);
+		//####### Die Umrechnungen cm Behang nach Dim Level ist nicht linear.
+		//####### Experimentel 5-10 Werte ermitteln, in excel Diagramm eintragen und polinomyal annähern. 
+		//real dim = ((-0.0006*BehangCm*BehangCm)-(0.2825*BehangCm))+100;
+		var dim = ((0.0006*BehangCm*BehangCm)+(0.2825*BehangCm))
+		//!WriteLine(dim);
+		
+		RollladenWZWR.send(new PercentType(dim.intValue)) 
+		RollladenWZWL.send(new PercentType(dim.intValue)) 
+    }
+end
