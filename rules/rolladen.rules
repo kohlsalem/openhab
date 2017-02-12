@@ -1,16 +1,21 @@
 import org.openhab.core.library.types.*
 
+
+// Remember old states, in case rolershutters have been raised on opening the dores
 var Number oldStateTTWest = 0
 var Number oldStateTTSued = 0
+
+// spots shall switch of after some time
 var Timer spotTimer = null  
 
+// On opening of the door, i want to have some light
 rule "TUplightsOn"
 when 
    Item TerrasseWest  received update 
 or
    Item Sun_Elevation  received update
 then   
-  logInfo("Tuer", "TUplightsOn: Entering Rule")
+  logDebug("Tuer", "TUplightsOn: Entering Rule")
   val elevation = (Sun_Elevation.state as DecimalType).intValue
   
   logDebug("Tuer", "TUplightsOn: Door: {} Elevation: {}",TerrasseWest.state, elevation)
@@ -25,6 +30,8 @@ then
   }  
 end
 
+// I want to optically enhance the living room. So, if sun goes down
+// spotlites shall switch on. Up to 6 h or untill the shutters go down. 
 rule "Spotlights"
 when 
    Item RollladenWZWR changed
@@ -33,7 +40,7 @@ or
 or
    Item Sun_Elevation  received update
 then
-  logInfo("Tuer", "Spotlights: Entering Rule")
+  logDebug("Tuer", "Spotlights: Entering Rule")
   val elevation = (Sun_Elevation.state as DecimalType).intValue
   val positionWL = (RollladenWZWL.state as DecimalType).intValue
   val positionWR = (RollladenWZWR.state as DecimalType).intValue
@@ -53,12 +60,12 @@ then
   } 
    
 end
-
+// if door opens and shutters are down - open them, and close them later
 rule "TTWestOpen"
 when 
   Item TerrasseWest changed from CLOSED to OPEN
 then
-  logInfo("Tuer", "TTWestOpen: Entering Rule")
+  logDebug("Tuer", "TTWestOpen: Entering Rule")
  
   // get the JSON of the door only - i want to see the state NOW, not the polled one which could be outdated
   var String json = sendHttpGetRequest("http://homepilot/deviceajax.do?device=10006")
@@ -72,19 +79,22 @@ then
     RollladenWZWR.send(new PercentType(0)) // open rolershutter   	   
   } 
 end  
+// if door opens and shutters are down - open them, and close them later
 rule "TTWestClose"
 when 
   Item TerrasseWest changed from OPEN to CLOSED
 then
-  logInfo("Tuer", "TTWestClose: Entering Rule")
+  logDebug("Tuer", "TTWestClose: Entering Rule")
   logDebug("Tuer", "TTWestClose: Restoring Shutter to {} ",oldStateTTWest)
   RollladenWZWR.send(new PercentType(oldStateTTWest.intValue))
 end
+// prevent shutters from locking me outside. If door is open but some
+// timer closed the shutter --> reopen them
 rule "TTWestSecurity"
 when 
   Item RollladenWZWR changed
 then
-  logInfo("Tuer", "TTWestSecurity: Entering Rule")
+  logDebug("Tuer", "TTWestSecurity: Entering Rule")
   if( TerrasseWest.state == "OPEN" ){
 	  val position = (RollladenWZWR.state as DecimalType).intValue
 	  logDebug("Tuer", "TTWestSecurity: Shutter at {}", position)	  
@@ -95,12 +105,12 @@ then
   }
 end
 
-
+// if door opens and shutters are down - open them, and close them later
 rule "TTSuedOpen"
 when 
   Item TerrasseSued changed from CLOSED to OPEN
 then
-  logInfo("Tuer", "TTSuedOpen: Entering Rule")
+  logDebug("Tuer", "TTSuedOpen: Entering Rule")
  
   // get the JSON of the door only - i want to see the state NOW, not the polled one which could be outdated
   var String json = sendHttpGetRequest("http://homepilot/deviceajax.do?device=10005")
@@ -114,19 +124,22 @@ then
     RollladenWZSMR.send(new PercentType(0)) // open rolershutter   	   
   } 
 end  
+// if door opens and shutters are down - open them, and close them later
 rule "TTSuedClose"
 when 
   Item TerrasseSued changed from OPEN to CLOSED
 then
-  logInfo("Tuer", "TTSuedClose: Entering Rule")
+  logDebug("Tuer", "TTSuedClose: Entering Rule")
   logDebug("Tuer", "TTSuedClose: Restoring Shutter to {} ",oldStateTTSued)
   RollladenWZSMR.send(new PercentType(oldStateTTSued.intValue))
 end
+// prevent shutters from locking me outside. If door is open but some
+// timer closed the shutter --> reopen them
 rule "TTSuedSecurity"
 when 
   Item RollladenWZWR changed
 then
-  logInfo("Tuer", "TTSuedSecurity: Entering Rule")
+  logDebug("Tuer", "TTSuedSecurity: Entering Rule")
   if( TerrasseSued.state == "OPEN" ){
 	  val position = (RollladenWZSMR.state as DecimalType).intValue
 	  logDebug("Tuer", "TTSuedSecurity: Shutter at {}", position)	  

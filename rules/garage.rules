@@ -7,19 +7,19 @@ rule "GarageSetInt"
 when
   Item Garage received command  
 then
-    logInfo("LeseLampe", "Entering with Command : "+GarageOld.toString+"-->"+receivedCommand.toString)
+    logDebug("LeseLampe", "Entering with Command : "+GarageOld.toString+"-->"+receivedCommand.toString)
   
 
    if( receivedCommand==80){
-       logInfo("LeseLampe", "Recieved 80==Öffnen")
+       logDebug("LeseLampe", "Recieved 80==Öffnen")
        Thread::sleep(3000)
         Garage.sendCommand(0) //offen
    } else if( receivedCommand==20){
-      logInfo("LeseLampe", "Recieved 20==Schliessen")
+      logDebug("LeseLampe", "Recieved 20==Schliessen")
       Thread::sleep(3000)
         Garage.sendCommand(100)//geschlossen
    }
-   logInfo("LeseLampe", "Exit")
+   logDebug("LeseLampe", "Exit")
    GarageOld = receivedCommand
  end
 */

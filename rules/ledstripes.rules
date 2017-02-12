@@ -8,15 +8,15 @@ when
 	Item LichtEsstisch received update
 	
 then
-  logInfo("LEDStripes", "LEDStripesGuteNacht: Entering Rule")
+  logDebug("LEDStripes", "LEDStripesGuteNacht: Entering Rule")
  
   if( Sun_Elevation.state != null && 
       LichtCouchtisch.state != null &&
       LichtEsstisch.state != null
       ){   
-    logInfo("LEDStripes", "LEDStripesGuteNacht: Sun_Elevation  : {}",Sun_Elevation.state )  	
-    logInfo("LEDStripes", "LEDStripesGuteNacht: LichtCouchtisch: {}",LichtCouchtisch.state)  	
-    logInfo("LEDStripes", "LEDStripesGuteNacht: LichtEsstisch  : {}",LichtEsstisch.state)  	
+    logDebug("LEDStripes", "LEDStripesGuteNacht: Sun_Elevation  : {}",Sun_Elevation.state )  	
+    logDebug("LEDStripes", "LEDStripesGuteNacht: LichtCouchtisch: {}",LichtCouchtisch.state)  	
+    logDebug("LEDStripes", "LEDStripesGuteNacht: LichtEsstisch  : {}",LichtEsstisch.state)  	
       	
     if( ((Sun_Elevation.state as DecimalType).intValue < 0) &&
         ((LichtCouchtisch.state as DecimalType).intValue == 0) &&
@@ -38,7 +38,7 @@ when
 	Item LichtEsstisch received update
 	
 then
-  logInfo("LEDStripes", "LEDStripesAuto: Entering Rule")
+  logDebug("LEDStripes", "LEDStripesAuto: Entering Rule")
   
   if( LichtButLed.state != null && 
       LichtCouchtisch.state != null &&
@@ -74,7 +74,7 @@ rule "LEDStripesSet"
 when
   Item LichtButLed received command 
 then
-   logInfo("LEDStripes", "LEDStripesSet: Entering Rule LEDStripesSet")
+   logDebug("LEDStripes", "LEDStripesSet: Entering Rule LEDStripesSet")
    if( receivedCommand.toString == "ON" || receivedCommand.toString == "OFF"){
      Candle.sendCommand(receivedCommand.toString)
      LedCouch.sendCommand(receivedCommand.toString)    
@@ -86,7 +86,7 @@ rule "LEDStripesInit"
 when
    System started
 then
-  logInfo("LEDStripes", "LEDStripesInit: Entering Rule")
+  logDebug("LEDStripes", "LEDStripesInit: Entering Rule")
 //  postUpdate(LichtButLed,"AUTO")
   LichtButLed.sendCommand("AUTO")
 end

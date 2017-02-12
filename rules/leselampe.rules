@@ -6,7 +6,7 @@ rule "LeselampeAuto"
 when
 	Item LichtCouchtisch received update
 then
-  logInfo("LeseLampe", "LeselampeAuto: Entering Rule")
+  logDebug("LeseLampe", "LeselampeAuto: Entering Rule")
   
   if( LichtButLeselampe.state != null && 
       LichtLeselampe.state != null ){   
@@ -35,7 +35,7 @@ rule "LeselampeToggle"
 when
   Item WZTaster2S received update ON
 then
-   logInfo("LeseLampe", "LeselampeToggle: Entering Rule")
+   logDebug("LeseLampe", "LeselampeToggle: Entering Rule")
    
     if (LichtLeselampe.state==ON)
       { LichtLeselampe.sendCommand(OFF) }
@@ -49,7 +49,7 @@ rule "LeselampeSet"
 when
   Item LichtButLeselampe received command 
 then
-   logInfo("LeseLampe", "LeselampeSet: Entering Rule")
+   logDebug("LeseLampe", "LeselampeSet: Entering Rule")
    if( receivedCommand.toString == "ON" || receivedCommand.toString == "OFF"){
      LichtLeselampe.sendCommand(receivedCommand.toString)
    }
@@ -59,7 +59,7 @@ rule "LeselampeInit"
 when
    System started
 then
-  logInfo("LeseLampe", "LeselampeInit: Entering Rule")
+  logDebug("LeseLampe", "LeselampeInit: Entering Rule")
 //  postUpdate(LichtButLeselampe,"AUTO")
   LichtButLeselampe.sendCommand("AUTO")
 end
