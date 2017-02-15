@@ -2,8 +2,8 @@
 
 Switch  Sunshade "Rollanden Sonnenschutz" 
 
-Switch WZTaster2S "Taster Leselampe"  {homematic="homematic:HM-PB-6-WM55:a8faecaa:NEQ0104690:2#PRESS_SHORT"}
-Switch WZTaster2L "Taster Leselampe Long"  {homematic="homematic:HM-PB-6-WM55:a8faecaa:NEQ0104690:2#PRESS_LONG"}
+Switch WZTaster2S "Taster Leselampe"  {channel="homematic:HM-PB-6-WM55:a8faecaa:NEQ0104690:2#PRESS_SHORT"}
+Switch WZTaster2L "Taster Leselampe Long"  {channel="homematic:HM-PB-6-WM55:a8faecaa:NEQ0104690:2#PRESS_LONG"}
 
 	
 Dimmer  LichtCouchtisch "Sofa [%d %%]" [ "Lighting" ] { channel="homematic:HM-LC-Dim1TPBU-FM:a8faecaa:MEQ0168594:1#LEVEL" }
@@ -15,7 +15,7 @@ Switch  LichtKueche  "Küche"  <light>  [ "Lighting" ] { channel="homematic:HM-L
 
 Switch  LichtEingang  "Eingang"  <light>  [ "Lighting" ] { channel="homematic:HmIP-BSM:a8faecaa:000855699C4B85:4#STATE" }
 
-Switch  DALicht  "Dunstabzug Licht" <light> { channel="homematic:HM-LC-Sw4-WM:a8faecaa:MEQ0498690:1#STATE"  }
+Switch  DALicht  "Dunstabzug Licht" <light>  { channel="homematic:HM-LC-Sw4-WM:a8faecaa:MEQ0498690:1#STATE"  }
 Switch  DAButLicht "Dunstabzug" <light>
 
 Switch  DAPlusFB  { channel="homematic:HM-LC-Sw4-WM:a8faecaa:MEQ0498690:3#STATE"  }
@@ -25,23 +25,23 @@ Switch  DAMinusFB { channel="homematic:HM-LC-Sw4-WM:a8faecaa:MEQ0498690:2#STATE"
 Switch  DAButMinus "Dunstabzug Minus" <fan>
 Switch  DAButAus "Dunstabzug Aus" <fan>
 
-Dimmer  LichtAlex "Alex [%d %%]" { channel="homematic:HM-LC-Dim1TPBU-FM:a8faecaa:MEQ0395313:1#LEVEL" }
+Dimmer  LichtAlex "Alex [%d %%]" [ "Lighting" ]{ channel="homematic:HM-LC-Dim1TPBU-FM:a8faecaa:MEQ0395313:1#LEVEL" }
 
 Switch  LichtArbeitszimmer  "Arbeitszimmer" <light> [ "Lighting" ] { channel="homematic:HM-LC-Sw1PBU-FM:a8faecaa:MEQ0988193:1#STATE" }
 
 Switch  LichtFlur  "Flur"   <light>  [ "Lighting" ] { channel="homematic:HM-LC-Sw1-DR:a8faecaa:MEQ1565505:1#STATE" }
 
-Switch  GartenUplights  "Terrasse Uplights"  <light>  { channel="homematic:HM-LC-Sw4-DR:a8faecaa:MEQ1810970:1#STATE" }
+Switch  GartenUplights  "Terrasse Uplights"  <light> [ "Lighting" ] { channel="homematic:HM-LC-Sw4-DR:a8faecaa:MEQ1810970:1#STATE" }
 
-Switch  GartenSpotlight  "Spotlights"  <light> { channel="homematic:HM-LC-Sw4-DR:a8faecaa:MEQ1810970:2#STATE" }
+Switch  GartenSpotlight  "Spotlights"  <light> [ "Lighting" ]{ channel="homematic:HM-LC-Sw4-DR:a8faecaa:MEQ1810970:2#STATE" }
 
-Switch  GartenPumpe  "Teichpumpe"  <pump> { channel="homematic:HM-LC-Sw4-DR:a8faecaa:MEQ1810970:3#STATE" }
+Switch  GartenPumpe  "Teichpumpe"  <pump> [ "Switchable" ]{ channel="homematic:HM-LC-Sw4-DR:a8faecaa:MEQ1810970:3#STATE" }
 
-Switch  GartenFlutlicht  "Flutlicht"  <light> { channel="homematic:HM-LC-Sw4-DR:a8faecaa:MEQ1810970:4#STATE" }
+Switch  GartenFlutlicht  "Flutlicht"  <light> [ "Lighting" ] { channel="homematic:HM-LC-Sw4-DR:a8faecaa:MEQ1810970:4#STATE" }
 
-Switch  LichtJohanna "Johanna"  <light> { channel="homematic:HM-LC-Sw1PBU-FM:a8faecaa:MEQ0988188:1#STATE" }
+Switch  LichtJohanna "Johanna"  <light> [ "Lighting" ] { channel="homematic:HM-LC-Sw1PBU-FM:a8faecaa:MEQ0988188:1#STATE" }
 
-Switch  Insektenlampe  "Insektenlampe"  <energy> { channel="homematic:HM-LC-Sw1-FM:a8faecaa:NEQ0178193:1#STATE" }
+Switch  Insektenlampe  "Insektenlampe"  <energy> [ "Switchable" ] { channel="homematic:HM-LC-Sw1-FM:a8faecaa:NEQ0178193:1#STATE" }
 Switch  LichtKeller  "Keller"  <light> [ "Lighting" ] { channel="homematic:HM-LC-Sw1-FM:a8faecaa:MEQ1437855:1#STATE" }
 Switch  LichtSpielzimmer "Spielzimmer" <light> [ "Lighting" ] { channel="homematic:HM-LC-Sw1PBU-FM:a8faecaa:MEQ0990792:1#STATE" }
 Switch  LichtWohnzimmer  "Wohnzimmer"  <light> [ "Lighting" ] { channel="homematic:HM-LC-Sw1-DR:a8faecaa:MEQ1563302:1#STATE" }
@@ -58,8 +58,8 @@ Number HKWohnzimmerSetPoint    "HK Wohnzimmer Sollteperatur [%.1f °C]" <tempera
 Dimmer HKWohnzimmerLevel       "HK Wohnzimmer Ventil [%.0f %%]" <heating>             { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#LEVEL" }	
 Number HKWohnzimmerActual      "HK Wohnzimmer Isttemperatur [%.1f °C]" <temperature> { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#ACTUAL_TEMPERATURE" }	
 
-Number ThermostatWohnzimmerSetPoint    "Thermostat WZ Sollteperatur [%.1f °C]" <temperature> { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#SET_POINT_TEMPERATURE" }	
-Number ThermostatWohnzimmerActual      "Thermostat WZ Isttemperatur [%.1f °C]" <temperature> { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#ACTUAL_TEMPERATURE" }	
+Number ThermostatWohnzimmerSetPoint    "Thermostat WZ Sollteperatur [%.1f °C]" <temperature> [ "TargetTemperature" ] { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#SET_POINT_TEMPERATURE" }	
+Number ThermostatWohnzimmerActual      "Thermostat WZ Isttemperatur [%.1f °C]" <temperature> [ "CurrentTemperature" ]{ channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#ACTUAL_TEMPERATURE" }	
 
 Switch PartyMode      "Party Mode" <heating>  { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#PARTY_MODE" }
 Number PartySetPoint  "Party SetPoint [%.1f °C]" <temperature>  { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#PARTY_SET_POINT_TEMPERATURE" }

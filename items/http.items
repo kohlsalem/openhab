@@ -1,13 +1,13 @@
 String Hoermann "Garagentor [MAP(garage.map):%s]" <garagedoor> {http=">[DOOPEN:GET:http://192.168.178.47/open] >[DOCLOSE:GET:http://192.168.178.47/close]"}
+Switch Garage "Garagentor" <garagedoor> [ "Switchable" ]
 
-
-String LichtButLed "Led Streifen" <light> [ "Lighting" ]
+String LichtButLed "Led Streifen" <light> 
 
 Dimmer Candle "Kerzen [%d]" <fire> {http="<[http://candle:60000:JSONPATH($.b)] >[*:GET:http://candle/?b=%2$s] >[ON:GET:http://candle/?b=100] >[OFF:GET: http://candle/?b=0]"}
 
-Dimmer LedCouch "Led Couch [%d]" [ "Lighting" ] {http="<[http://ledcouch:60000:JSONPATH($.b)] >[*:GET:http://ledcouch/?b=%2$s] >[ON:GET:http://ledcouch/?b=100] >[OFF:GET: http://ledcouch/?b=0]"}
+Dimmer LedCouch "Led Couch [%d]" {http="<[http://ledcouch:60000:JSONPATH($.b)] >[*:GET:http://ledcouch/?b=%2$s] >[ON:GET:http://ledcouch/?b=100] >[OFF:GET: http://ledcouch/?b=0]"}
 
-Dimmer LedTheke "Led Theke [%d]" [ "Lighting" ] {http="<[http://ledtheke:60000:JSONPATH($.b)] >[*:GET:http://ledtheke/?b=%2$s] >[ON:GET:http://ledtheke/?b=100] >[OFF:GET: http://ledtheke/?b=0]"}
+Dimmer LedTheke "Led Theke [%d]" {http="<[http://ledtheke:60000:JSONPATH($.b)] >[*:GET:http://ledtheke/?b=%2$s] >[ON:GET:http://ledtheke/?b=100] >[OFF:GET: http://ledtheke/?b=0]"}
 
 // "WZSL": 10001 "name": "WZ Süd Links",        
 // "WZSR": 10002 "name": "WZ Süd Rechts",

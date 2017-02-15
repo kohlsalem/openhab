@@ -1,7 +1,6 @@
 import org.openhab.core.library.types.*
 
 
-
 rule "LeselampeAuto"
 when
 	Item LichtCouchtisch received update
@@ -38,10 +37,9 @@ then
    logDebug("LeseLampe", "LeselampeToggle: Entering Rule")
    
     if (LichtLeselampe.state==ON)
-      { LichtLeselampe.sendCommand(OFF) }
-   
-   if (LichtLeselampe.state==ON)
-      { LichtLeselampe.sendCommand(OFF) }
+      { LichtLeselampe.sendCommand(OFF) } 
+   else if (LichtLeselampe.state==OFF)
+      { LichtLeselampe.sendCommand(ON) }
 end
 
 

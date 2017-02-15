@@ -1,4 +1,44 @@
 import org.openhab.core.library.types.*
+
+rule "FeedbackOpen"
+when 
+  Item Hoermann received update "OPEN"
+then
+   if( Garage.state != ON)
+   {
+   	 Garage.sendCommand(ON) 
+   } 
+end
+rule "FeedbackClose"
+when 
+  Item Hoermann received update "CLOSED"
+then
+   if( Garage.state != OFF)
+   {
+   	 Garage.sendCommand(OFF) 
+   } 
+end
+rule "GarageOpen"
+when
+  Item Garage received command ON
+then
+   if( (Hoermann.state != null) && (Hoermann.state == "CLOSED"))
+   {
+     Hoermann.sendCommand("DOOPEN")  
+   }
+end
+
+rule "GarageClose"
+when
+  Item Garage received command
+then
+   if( (Hoermann.state != null) && (Hoermann.state == "OPEN"))
+   {
+     Hoermann.sendCommand("DOCLOSE")     
+   }
+end
+
+
 /* 
 var Number GarageOld = 0
 

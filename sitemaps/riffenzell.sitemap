@@ -1,6 +1,7 @@
 sitemap riffenzell label="Riffenzell" {
    	
     Frame label="Wohnzimmer" {
+    	Switch item=WZTaster2S
         Slider item=LichtCouchtisch 
         Slider item=LichtEsstisch 
         Switch item=LichtKeller
@@ -101,6 +102,7 @@ sitemap riffenzell label="Riffenzell" {
     	Text item=Sunset_Time
     	Switch item=Hoermann  mappings=[DOOPEN="/\\", DOCLOSE="\\/"]
     	Text item=Hoermann
+    
     
     }       
 }

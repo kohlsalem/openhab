@@ -17,7 +17,9 @@ then
     logDebug("LEDStripes", "LEDStripesGuteNacht: Sun_Elevation  : {}",Sun_Elevation.state )  	
     logDebug("LEDStripes", "LEDStripesGuteNacht: LichtCouchtisch: {}",LichtCouchtisch.state)  	
     logDebug("LEDStripes", "LEDStripesGuteNacht: LichtEsstisch  : {}",LichtEsstisch.state)  	
-      	
+    if(now.getHourOfDay >= 18){
+       HarmonyActivity.sendCommand("PowerOff")
+    }
     if( ((Sun_Elevation.state as DecimalType).intValue < 0) &&
         ((LichtCouchtisch.state as DecimalType).intValue == 0) &&
         ((LichtEsstisch.state as DecimalType).intValue == 0)  &&
