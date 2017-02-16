@@ -1,14 +1,3 @@
 import org.openhab.core.library.types.*
 
-rule "Increase counter"
-when
-	Time cron "0 30 21 1/1 * ? *"  //http://www.cronmaker.com/
-then
-  val positionWL = (RollladenWZWL.state as DecimalType).intValue
-  val positionWR = (RollladenWZWR.state as DecimalType).intValue
-  
-  if (positionWL<30) RollladenWZWR.send(new PercentType(30))
-  if( TerrasseWest.state == "CLOSED" ){
-    if (positionWR<30) RollladenWZWL.send(new PercentType(30))
-  }	  
-end
+

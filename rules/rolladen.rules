@@ -8,6 +8,10 @@ var Number oldStateTTSued = 0
 // spots shall switch of after some time
 var Timer spotTimer = null  
 
+
+
+
+// put the west blinds down to 1/2 (equals 30%)
 rule "Increase counter"
 when
 	Time cron "0 30 21 1/1 * ? *"  //http://www.cronmaker.com/
