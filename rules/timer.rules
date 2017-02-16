@@ -1,5 +1,14 @@
-Your rules go here.
-All rule files have to have the ".rules" file extension and must follow a special syntax.
+import org.openhab.core.library.types.*
 
-Check out the openHAB documentation for more details:
-http://docs.openhab.org/features/automation/ruledsl.html
+rule "Increase counter"
+when
+	Time cron "0 30 21 1/1 * ? *"  //http://www.cronmaker.com/
+then
+  val positionWL = (RollladenWZWL.state as DecimalType).intValue
+  val positionWR = (RollladenWZWR.state as DecimalType).intValue
+  
+  if (positionWL<30) RollladenWZWR.send(new PercentType(30))
+  if( TerrasseWest.state == "CLOSED" ){
+    if (positionWR<30) RollladenWZWL.send(new PercentType(30))
+  }	  
+end
