@@ -19,6 +19,7 @@ sitemap riffenzell label="Riffenzell" {
 //           Colorpicker item=Candle
         }
         Group  label="Rollläden" {
+           Switch item=Sunshade
            Slider item=RollladenWZWR
            Slider item=RollladenWZWL
            Slider item=RollladenWZSR
