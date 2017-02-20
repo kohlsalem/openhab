@@ -2,8 +2,6 @@ rule "DunstLicht"
 when
 Item DAButLicht received command ON
 then
-  DAButLicht.sendCommand(OFF)
-   
   DALicht.sendCommand(ON)
   Thread::sleep(100)
   DALicht.sendCommand(OFF)
@@ -12,7 +10,7 @@ end
 
 rule "DunstPlus"
 when
-Item DAButPlus received command ON
+Item DAButPlus received command ON 
 then
   DAButPlus.sendCommand(OFF)
   

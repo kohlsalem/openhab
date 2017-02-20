@@ -1,23 +1,27 @@
 import org.openhab.core.library.types.*
 
-rule "FeedbackOpen"
+rule "Feedback"
 when 
-  Item Hoermann received update "OPEN"
+  Item Hoermann received update 
 then
-   if( Garage.state != ON)
+   if(Hoermann.state=="OPEN")
    {
-   	 Garage.sendCommand(ON) 
-   } 
+	   if( Garage.state != ON)
+	   {
+	   	 Garage.sendCommand(ON) 
+	   } 
+	   say("Das Garagentor ist offen", "voicerss:deDE", "sonos:PLAY1:RINCON_949F3E07F2FE01400")
+   }
+	if(Hoermann.state=="CLOSED")
+	{
+	   if( Garage.state != OFF)
+	   {
+	   	 Garage.sendCommand(OFF) 
+	   } 
+	   say("Das Garagentor ist geschlossen", "voicerss:deDE", "sonos:PLAY1:RINCON_949F3E07F2FE01400")
+	}
 end
-rule "FeedbackClose"
-when 
-  Item Hoermann received update "CLOSED"
-then
-   if( Garage.state != OFF)
-   {
-   	 Garage.sendCommand(OFF) 
-   } 
-end
+
 rule "GarageOpen"
 when
   Item Garage received command ON
@@ -30,7 +34,7 @@ end
 
 rule "GarageClose"
 when
-  Item Garage received command
+  Item Garage received command OFF
 then
    if( (Hoermann.state != null) && (Hoermann.state == "OPEN"))
    {
