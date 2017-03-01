@@ -23,7 +23,7 @@ then
         ((LichtEsstisch.state as DecimalType).intValue == 0)  &&
         (LichtFlur.state == OFF ) )
     {  
-       if(now.getHourOfDay >= 18){
+       if(now.getHourOfDay >= 22){
          HarmonyActivity.sendCommand("PowerOff")
        }	
     	

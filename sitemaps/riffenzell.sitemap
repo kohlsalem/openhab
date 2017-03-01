@@ -42,6 +42,8 @@ sitemap riffenzell label="Riffenzell" {
             Setpoint item=PartySetPoint  
             Text item=PartyTimeStart 
             Text item=PartyTimeEnd   
+            Chart item=HKWohnzimmerActual service="rrd4j" period=12h
+            Chart item=HKTreppeActual service="rrd4j" period=12h
 
             
          //  Setpoint item=HKTreppeSetPoint step=0.5 minValue=15 maxValue=30
@@ -75,6 +77,7 @@ sitemap riffenzell label="Riffenzell" {
         Slider item=LichtAlex 
         Switch item=LichtFlur
         Switch item=LichtArbeitszimmer
+        Switch item=LampeSchreibtisch
         Switch item=LichtSpielzimmer    
         Group  label="Rollläden" {
            Slider item=RollladenSZR
