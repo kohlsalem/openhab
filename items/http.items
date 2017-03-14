@@ -5,11 +5,11 @@ Switch LampeSchreibtisch "Schreibtischlampe" <light>  [ "Lighting" ] {http=">[ON
 
 String LichtButLed "Led Streifen" <light> 
 
-Dimmer Candle "Kerzen [%d]" <fire> {http="<[http://candle:60000:JSONPATH($.b)] >[*:GET:http://candle/?b=%2$s] >[ON:GET:http://candle/?b=100] >[OFF:GET: http://candle/?b=0]"}
+Dimmer Candle "Kerzen [%d]" <fire> (WZLightOther) {http="<[http://candle:60000:JSONPATH($.b)] >[*:GET:http://candle/?b=%2$s] >[ON:GET:http://candle/?b=100] >[OFF:GET: http://candle/?b=0]"}
 
-Dimmer LedCouch "Led Couch [%d]" {http="<[http://ledcouch:60000:JSONPATH($.b)] >[*:GET:http://ledcouch/?b=%2$s] >[ON:GET:http://ledcouch/?b=100] >[OFF:GET: http://ledcouch/?b=0]"}
+Dimmer LedCouch "Led Couch [%d]" (WZLightOther){http="<[http://ledcouch:60000:JSONPATH($.b)] >[*:GET:http://ledcouch/?b=%2$s] >[ON:GET:http://ledcouch/?b=100] >[OFF:GET: http://ledcouch/?b=0]"}
 
-Dimmer LedTheke "Led Theke [%d]" {http="<[http://ledtheke:60000:JSONPATH($.b)] >[*:GET:http://ledtheke/?b=%2$s] >[ON:GET:http://ledtheke/?b=100] >[OFF:GET: http://ledtheke/?b=0]"}
+Dimmer LedTheke "Led Theke [%d]" (WZLightOther){http="<[http://ledtheke:60000:JSONPATH($.b)] >[*:GET:http://ledtheke/?b=%2$s] >[ON:GET:http://ledtheke/?b=100] >[OFF:GET: http://ledtheke/?b=0]"}
 
 // "WZSL": 10001 "name": "WZ Süd Links",        
 // "WZSR": 10002 "name": "WZ Süd Rechts",
@@ -36,11 +36,11 @@ Rollershutter RollladenWZWR "West Rechts" (GRollAll,GRollWZ,GRollWZW) {http="<[h
 
 Rollershutter RollladenWZWL "West Links" (GRollAll,GRollWZ,GRollWZW) {http="<[homepilotCache:20000:JS(10007.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10007?do=use&cmd=9&pos=%2$s]"}
 
-Rollershutter RollladenSZR "Schlafzimmer Rechts" (GRollAll,GRollSZ) {http="<[homepilotCache:20000:JS(10008.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10008?do=use&cmd=9&pos=%2$s]"}
+Rollershutter RollladenSZR "Schlafzimmer Rechts" (GRollAll,GRollOG,GRollSZ) {http="<[homepilotCache:20000:JS(10008.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10008?do=use&cmd=9&pos=%2$s]"}
 
-Rollershutter RollladenSZL "Schlafzimmer Links" (GRollAll,GRollSZ) {http="<[homepilotCache:20000:JS(10009.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10009?do=use&cmd=9&pos=%2$s]"}
+Rollershutter RollladenSZL "Schlafzimmer Links" (GRollAll,GRollOG,GRollSZ) {http="<[homepilotCache:20000:JS(10009.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10009?do=use&cmd=9&pos=%2$s]"}
 
-Rollershutter RollladenSZA "Schlafzimmer Alex" {http="<[homepilotCache:20000:JS(10010.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10010?do=use&cmd=9&pos=%2$s]"}
+Rollershutter RollladenSZA "Schlafzimmer Alex" (GRollAll,GRollOG){http="<[homepilotCache:20000:JS(10010.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10010?do=use&cmd=9&pos=%2$s]"}
 
  /*
 Number RollladenWZWL_Value "WZWL [%d]" {http="<[homepilotCache:10000:JSONPATH($.devices[?(@.did==10006)].position)]"}*/

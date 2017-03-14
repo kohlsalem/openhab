@@ -1,0 +1,40 @@
+
+/* Typical JSON to be retrieved:
+ 
+{  
+   "successful":true,
+   "name":"Rasi",
+   "status":{  
+      "status":17,
+      "stopped":false,
+      "duration":3679,
+      "mode":2,
+      "battery":100,
+      "hours":416
+   },
+   "timer":{  
+      "status":0,
+      "next":{  
+         "date":"14.03.2017",
+         "time":"06:30:00", 
+         "unix":1489473000
+      }
+   },
+   "wlan":{  
+      "signal":-89
+   }   
+}
+ */
+
+
+String AutoMowerStatus "Status [MAP(automowerinfo_status.map):%s]"		<grass>			{http="<[automowerCache:30000:JSONPATH($.status.status)]"}    
+String AutoMowerBattery "Batteriestatus (%)[%s]"						<battery>		{http="<[automowerCache:30000:JSONPATH($.status.battery)]"}
+String AutoMowerMode "Modus [MAP(automowerinfo_mode.map):%s]"			<movecontrol>	{http="<[automowerCache:30000:JSONPATH($.status.mode)]"}
+String AutoMowerHours "Betriebsstunden [%s]"							<pressure>		{http="<[automowerCache:30000:JSONPATH($.status.hours)]"}
+String AutoMowerWifi "WiFi Signal (db) [%s]"							<signal>		{http="<[automowerCache:30000:JSONPATH($.wlan.signal)]"}
+String AutoMowerNextRunD "Nächster Mähzeitpunkt [%s]"					<calendar>		{http="<[automowerCache:30000:JSONPATH($.timer.next.date)]"}
+String AutoMowerNextRunT "Nächster Mähzeitpunkt [%s]"					<clock>			{http="<[automowerCache:30000:JSONPATH($.timer.next.time)]"}
+String AutoMowerDuration "Dauer [%s]"   								<clock-on> 		{http="<[automowerCache:30000:JS(automower_duration.js)]"}
+
+String AutoMowerModeHomeAutoEOD "Modus"									<movecontrol> {http=">[*:GET:http://192.168.178.60/json?cmd=mode&mode=%2$s]"}
+String AutoMowerJob     "Mähen" <grass> 

@@ -16,14 +16,14 @@ Switch  LichtKueche  "Küche"  <light>  [ "Lighting" ] { channel="homematic:HM-L
 Switch  LichtEingang  "Eingang"  <light>  [ "Lighting" ] { channel="homematic:HmIP-BSM:a8faecaa:000855699C4B85:4#STATE" }
 
 Switch  DALicht  "Dunstabzug Licht" <light>  { channel="homematic:HM-LC-Sw4-WM:a8faecaa:MEQ0498690:1#STATE"  }
-Switch  DAButLicht "Dunstabzug" <light>
+Switch  DAButLicht "Dunstabzug" <light> (KueDA)
 
 Switch  DAPlusFB  { channel="homematic:HM-LC-Sw4-WM:a8faecaa:MEQ0498690:3#STATE"  }
-Switch  DAButPlus "Dunstabzug Plus" <fan>
+Switch  DAButPlus "Dunstabzug Plus" <fan> (KueDA)
 
 Switch  DAMinusFB { channel="homematic:HM-LC-Sw4-WM:a8faecaa:MEQ0498690:2#STATE"  }
-Switch  DAButMinus "Dunstabzug Minus" <fan>
-Switch  DAButAus "Dunstabzug Aus" <fan>
+Switch  DAButMinus "Dunstabzug Minus" <fan> (KueDA)
+Switch  DAButAus "Dunstabzug Aus" <fan> (KueDA)
 
 Dimmer  LichtAlex "Alex [%d %%]" [ "Lighting" ]{ channel="homematic:HM-LC-Dim1TPBU-FM:a8faecaa:MEQ0395313:1#LEVEL" }
 
@@ -48,15 +48,15 @@ Switch  LichtWohnzimmer  "Wohnzimmer"  <light> [ "Lighting" ] { channel="homemat
 
 
 
-String HKTreppeValveState  "HK Treppe Status [%s]" <heating>           { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#VALVE_STATE" }	 
-Number HKTreppeSetPoint    "HK Treppe Sollteperatur [%.1f °C]" <temperature> { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#SET_POINT_TEMPERATURE" }	
-Dimmer HKTreppeLevel       "HK Treppe Ventil [%.0f %%]" <heating>             { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#LEVEL" }	
-Number HKTreppeActual      "HK Treppe Isttemperatur [%.1f °C]" <temperature> { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#ACTUAL_TEMPERATURE" }	
+String HKTreppeValveState  "HK Treppe Status [%s]" <heating>                         (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#VALVE_STATE" }	 
+Number HKTreppeSetPoint    "HK Treppe Sollteperatur [%.1f °C]" <temperature>         (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#SET_POINT_TEMPERATURE" }	
+Dimmer HKTreppeLevel       "HK Treppe Ventil [%.0f %%]" <heating>                    (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#LEVEL" }	
+Number HKTreppeActual      "HK Treppe Isttemperatur [%.1f °C]" <temperature>         (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#ACTUAL_TEMPERATURE" }	
 
-String HKWohnzimmerValveState  "HK Wohnzimmer Status [%s]" <heating>           { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#VALVE_STATE" }	 
-Number HKWohnzimmerSetPoint    "HK Wohnzimmer Sollteperatur [%.1f °C]" <temperature> { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#SET_POINT_TEMPERATURE" }	
-Dimmer HKWohnzimmerLevel       "HK Wohnzimmer Ventil [%.0f %%]" <heating>             { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#LEVEL" }	
-Number HKWohnzimmerActual      "HK Wohnzimmer Isttemperatur [%.1f °C]" <temperature> { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#ACTUAL_TEMPERATURE" }	
+String HKWohnzimmerValveState  "HK Wohnzimmer Status [%s]" <heating>                 (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#VALVE_STATE" }	 
+Number HKWohnzimmerSetPoint    "HK Wohnzimmer Sollteperatur [%.1f °C]" <temperature> (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#SET_POINT_TEMPERATURE" }	
+Dimmer HKWohnzimmerLevel       "HK Wohnzimmer Ventil [%.0f %%]" <heating>            (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#LEVEL" }	
+Number HKWohnzimmerActual      "HK Wohnzimmer Isttemperatur [%.1f °C]" <temperature> (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#ACTUAL_TEMPERATURE" }	
 
 Number ThermostatWohnzimmerSetPoint    "Thermostat WZ Sollteperatur [%.1f °C]" <temperature> [ "TargetTemperature" ] { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#SET_POINT_TEMPERATURE" }	
 Number ThermostatWohnzimmerActual      "Thermostat WZ Isttemperatur [%.1f °C]" <temperature> [ "CurrentTemperature" ]{ channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#ACTUAL_TEMPERATURE" }	

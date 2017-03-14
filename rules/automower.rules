@@ -1,0 +1,61 @@
+import org.joda.time.*
+
+rule "AutomowerStartJob"
+when
+	Item AutoMowerJob  received command 
+then
+  logDebug("automower", "AutomowerStartJob: Entering Rule with {}",receivedCommand.toString)
+ 
+  // only work for active commands
+  if( receivedCommand.toString == "1" ||
+  	  receivedCommand.toString == "2" ||
+  	  receivedCommand.toString == "3" ||
+  	  receivedCommand.toString == "4" ){
+ 
+	  logDebug("automower", "AutomowerStartJob: Starting Job")
+	 
+	  var Number runtime = Integer::parseInt(receivedCommand.toString)
+	 
+	  var hour   = now.getHourOfDay
+	  var minute = now.getMinuteOfHour
+	 
+	  var commandstring = "http://192.168.178.60/json?cmd=mode&mode=job&begin=" + hour + ":" + minute + "&end=" +  (hour + runtime) + ":" + minute ;
+	    
+	  logDebug("automower", "AutomowerStartJob: Sending: {}", commandstring )
+	 
+	  var String result// = sendHttpGetRequest(commandstring)
+	  
+	  logDebug("automower", "AutomowerStartJob: Automower returned: {}", result)
+	  
+	  // reset the button
+	  AutoMowerJob.sendCommand("")
+  }
+end
+
+rule "AutoMowerModeHomeAutoEOD"
+when
+	Item AutoMowerModeHomeAutoEOD  received command 
+then
+  logDebug("automower", "AutoMowerModeHomeAutoEOD: Entering Rule with {}",receivedCommand.toString)
+   
+  if( receivedCommand.toString == "auto" ||
+  	  receivedCommand.toString == "home" ||
+  	  receivedCommand.toString == "eod" ||
+  	  receivedCommand.toString == "man" ){
+  	  	
+/*
+ *   0: Auto
+ *   1: Manuell
+ *   2: Home
+ *   3: Demo
+ */	  	
+  	  switch  receivedCommand.toString {
+    	case  receivedCommand.toString == "auto": AutoMowerMode.sendCommand("0")
+    	case  receivedCommand.toString == "home": AutoMowerMode.sendCommand("2")
+    	case  receivedCommand.toString == "eod": AutoMowerMode.sendCommand("0")
+    	case  receivedCommand.toString == "man": AutoMowerMode.sendCommand("1")
+      }
+      // reset the button
+	  AutoMowerModeHomeAutoEOD.sendCommand("")
+  }
+end

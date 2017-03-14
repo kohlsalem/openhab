@@ -8,17 +8,15 @@ sitemap riffenzell label="Riffenzell" {
         Switch item=Insektenlampe 
         Switch item=LichtWohnzimmer
         Switch item=LichtEingang
-//        Switch item=LichtLeselampe
         Switch item=LichtButLeselampe mappings=[ON="An", OFF="Aus", AUTO = "Automatic"] 	
         Switch item=LichtButLed mappings=[ON="An", OFF="Aus", AUTO = "Automatic"] 	
-        Group  label="Sonstige" {
+        Group  item=LedCouch label="Sonstige" {
            Slider item=Candle
            Slider item=LedCouch
            Slider item=LedTheke
-           Switch item=Sunshade
-//           Colorpicker item=Candle
+    
         }
-        Group  label="Rollläden" {
+        Group item=RollladenWZWR  label="Rollläden" {
            Switch item=Sunshade
            Slider item=RollladenWZWR
            Slider item=RollladenWZWL
@@ -27,7 +25,7 @@ sitemap riffenzell label="Riffenzell" {
            Slider item=RollladenWZSML
            Slider item=RollladenWZSL
         }
-         Group  label="Heizung" {
+         Group  item=HKWohnzimmerActual label="Heizung" {
             Setpoint item=ThermostatWohnzimmerSetPoint 
             Text item=ThermostatWohnzimmerActual   
         
@@ -42,8 +40,8 @@ sitemap riffenzell label="Riffenzell" {
             Setpoint item=PartySetPoint  
             Text item=PartyTimeStart 
             Text item=PartyTimeEnd   
-            Chart item=HKWohnzimmerActual service="rrd4j" period=12h
-            Chart item=HKTreppeActual service="rrd4j" period=12h
+//            Chart item=HKWohnzimmerActual service="rrd4j" period=12h
+//            Chart item=HKTreppeActual service="rrd4j" period=12h
 
             
          //  Setpoint item=HKTreppeSetPoint step=0.5 minValue=15 maxValue=30
@@ -65,7 +63,7 @@ sitemap riffenzell label="Riffenzell" {
     Frame label="Küche" {
         Switch item=LichtKueche 
         
-        Group  label="Dunstabzug" icon="fan"{
+        Group  item=DAButLicht label="Dunstabzug" icon="fan"{
         	Switch item=DAButLicht mappings=[ON="Licht"]
         	Switch item=DAButPlus  mappings=[ON="+"]
         	Switch item=DAButMinus mappings=[ON="-"]
@@ -79,7 +77,7 @@ sitemap riffenzell label="Riffenzell" {
         Switch item=LichtArbeitszimmer
         Switch item=LampeSchreibtisch
         Switch item=LichtSpielzimmer    
-        Group  label="Rollläden" {
+        Group  item=RollladenSZL  label="Rollläden" {
            Slider item=RollladenSZR
            Slider item=RollladenSZL
            Slider item=RollladenSZA
@@ -93,8 +91,6 @@ sitemap riffenzell label="Riffenzell" {
   
         Switch item=HarmonyFireTV icon="movecontrol" label="Fire Tv" visibility=[HarmonyActivity=="Fire Tv" ] mappings=[DirectionUp="/\\", DirectionDown="\\/", DirectionLeft="<", DirectionRight=">"]
         Switch item=HarmonyFireTV icon="movecontrol" label="Fire Tv" visibility=[HarmonyActivity=="Fire Tv" ] mappings=[ Home="Home", Back="Back", Ok="Ok"]
-        
-  
               
     }    
     Frame label="Garten" {
@@ -106,7 +102,21 @@ sitemap riffenzell label="Riffenzell" {
     	Text item=Sunset_Time
     	Switch item=Hoermann  mappings=[DOOPEN="/\\", DOCLOSE="\\/"]
     	Text item=Hoermann
-    
-    
     }       
+    Frame label="Automower Status" {
+
+       Text item=AutoMowerStatus 
+       Text item=AutoMowerBattery  valuecolor=[<30="red",<50="orange",>80="green"]
+       Text item=AutoMowerMode 
+       Text item=AutoMowerDuration 
+       Text item=AutoMowerHours 
+       Text item=AutoMowerWifi 
+       Text item=AutoMowerNextRunD   visibility=[AutoMowerMode==0]
+       Text item=AutoMowerNextRunT   visibility=[AutoMowerMode==0]
+    }
+
+    Frame label="Automower Steuerung" {
+       Switch item=AutoMowerModeHomeAutoEOD  mappings=[auto="Auto", home="Home", eod="Feierabend", man="Manuell"] label="Modus" 
+       Switch item=AutoMowerJob mappings=[1="1h", 2="2h", 3="3h", 4="4h"] label="Mähen" 
+    }
 }
