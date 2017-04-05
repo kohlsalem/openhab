@@ -38,3 +38,7 @@ String AutoMowerDuration "Dauer [%s]"   								<clock-on> 		{http="<[automowerC
 
 String AutoMowerModeHomeAutoEOD "Modus"									<movecontrol> {http=">[*:GET:http://192.168.178.60/json?cmd=mode&mode=%2$s]"}
 String AutoMowerJob     "Mähen" <grass> 
+
+Number AutoMowerLeft  "Linkes Rad"   <movecontrol>
+Number AutoMowerRight "Rechtes Rad"  <movecontrol>
+String AutoMowerGo    "Zeit"         <heating>	

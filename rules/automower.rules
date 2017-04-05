@@ -1,5 +1,45 @@
 import org.joda.time.*
 
+  
+rule "AutomowerError"
+when
+	Item AutoMowerStatus  received command 
+then
+  logDebug("automower", "AutomowerError: Entering Rule with {}",receivedCommand.toString)
+ 
+  // only work for active commands
+  if( receivedCommand.toString == "7" ){
+    logDebug("automower", "AutomowerError: Sending Notification")
+    
+    sendNotification("michael@kohlsalem.com","Rasi hat sich festgefahren!!!")
+	 
+    sendNotification("britta@kohlsalem.com","Rasi hat sich festgefahren!!!")
+  }
+end
+
+rule "AutomowerRemote"
+when
+	Item AutoMowerGo  received command 
+then
+  logDebug("automower", "AutomowerRemote: Entering Rule with {}",receivedCommand.toString)
+  
+  if( receivedCommand.toString != ""){
+    var left = ((AutoMowerLeft.state as DecimalType).intValue - 50) * 2  // Normalize from 0 - 100 to -100 - 100
+    var right = ((AutoMowerRight.state as DecimalType).intValue - 50) * 2  // Normalize from 0 - 100 to -100 - 100
+ 
+    var commandstring = "http://192.168.178.60/xml?cmd=direct&left=" + left + "&right=" + right + "&timeout=" + receivedCommand.toString ;
+
+    logDebug("automower", "AutomowerRemote: Sending: {}", commandstring )
+    
+    var String result = sendHttpGetRequest(commandstring)
+	  
+	logDebug("automower", "AutomowerRemote: Automower returned: {}", result)
+    
+    AutoMowerGo.sendCommand("")
+  }
+   
+end
+
 rule "AutomowerStartJob"
 when
 	Item AutoMowerJob  received command 
@@ -23,7 +63,7 @@ then
 	    
 	  logDebug("automower", "AutomowerStartJob: Sending: {}", commandstring )
 	 
-	  var String result// = sendHttpGetRequest(commandstring)
+	  var String result = sendHttpGetRequest(commandstring)
 	  
 	  logDebug("automower", "AutomowerStartJob: Automower returned: {}", result)
 	  
