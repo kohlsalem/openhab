@@ -42,6 +42,12 @@ Rollershutter RollladenSZL "Schlafzimmer Links" (GRollAll,GRollOG,GRollSZ) {http
 
 Rollershutter RollladenSZA "Schlafzimmer Alex" (GRollAll,GRollOG){http="<[homepilotCache:20000:JS(10010.js)] >[*:GET:http://homepilot/rest2/Index?do=/devices/10010?do=use&cmd=9&pos=%2$s]"}
 
+Dimmer RollladenSZAlexa "Rollladen Schlafzimmer [%d %%]" [ "Lighting" ]
+Dimmer RollladenWZAlexa "Rollladen Wohnzimmer [%d %%]" [ "Lighting" ] 
+Dimmer RollladenWZSAlexa "Rollladen Süden [%d %%]" [ "Lighting" ] 
+Dimmer RollladenWZWAlexa "Rollladen Westen [%d %%]" [ "Lighting" ] 
+Dimmer RollladenAlexAlexa "Rollladen Alexander [%d %%]" [ "Lighting" ]
+ 
  /*
 Number RollladenWZWL_Value "WZWL [%d]" {http="<[homepilotCache:10000:JSONPATH($.devices[?(@.did==10006)].position)]"}*/
 

@@ -41,4 +41,4 @@ String AutoMowerJob     "Mähen" <grass>
 
 Number AutoMowerLeft  "Linkes Rad"   <movecontrol>
 Number AutoMowerRight "Rechtes Rad"  <movecontrol>
-String AutoMowerGo    "Zeit"         <heating>	
+String AutoMowerGo    "Remote"         <heating>	

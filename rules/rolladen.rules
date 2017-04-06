@@ -9,8 +9,76 @@ var Number oldStateTTSued = 0
 var Timer spotTimer = null  
 
 
+// Update WZ items for Alexa
+rule "SetWohnzimmer"
+when
+	Item RollladenWZAlexa received command
+then
+  logDebug("Tuer","SetWohnzimmer: Entering Rule")
+  //val l        = (LichtCouchtisch.state as DecimalType).intValue
+  val position =  (RollladenWZAlexa.state as DecimalType).intValue 
+  RollladenWZWL.send(new PercentType(position))
+  RollladenWZWR.send(new PercentType(position))
+  RollladenWZSL.send(new PercentType(position))
+  RollladenWZSML.send(new PercentType(position))
+  RollladenWZSMR.send(new PercentType(position))
+  RollladenWZSR.send(new PercentType(position))
+end 
 
+rule "SetWohnzimmerWest"
+when
+	Item RollladenWZWAlexa received command
+then
+  logDebug("Tuer","SetWohnzimmerWest: Entering Rule")
+  //val l        = (LichtCouchtisch.state as DecimalType).intValue
+  val position =  (RollladenWZWAlexa.state as DecimalType).intValue 
+  RollladenWZWL.send(new PercentType(position))
+  RollladenWZWR.send(new PercentType(position))
+ 
+end 
 
+rule "SetWohnzimmerSued"
+when
+	Item RollladenWZSAlexa received command
+then
+  logDebug("Tuer","SetWohnzimmerSued: Entering Rule")
+  //val l        = (LichtCouchtisch.state as DecimalType).intValue
+  val position =  (RollladenWZSAlexa.state as DecimalType).intValue 
+  
+  RollladenWZSL.send(new PercentType(position))
+  RollladenWZSML.send(new PercentType(position))
+  RollladenWZSMR.send(new PercentType(position))
+  RollladenWZSR.send(new PercentType(position))
+end 
+rule "SetSchlafzimmer"
+when
+	Item RollladenSZAlexa received command
+then
+  logDebug("Tuer","SetSchlafzimmer: Entering Rule")
+  //val l        = (LichtCouchtisch.state as DecimalType).intValue
+  val position =  (RollladenSZAlexa.state as DecimalType).intValue 
+  
+  if(position>88 && position<92){
+  	RollladenSZL.send(new PercentType(100))
+    RollladenSZR.send(new PercentType(58))
+  } else{
+  	
+  	RollladenSZL.send(new PercentType(position))
+    RollladenSZR.send(new PercentType(position))
+  }
+  
+    
+end 
+
+rule "SetAlexRolladen"
+when
+	Item RollladenAlexAlexa received command
+then
+  logDebug("Tuer","SetAlexRolladen: Entering Rule")
+  //val l        = (LichtCouchtisch.state as DecimalType).intValue
+  val position =  (RollladenAlexAlexa.state as DecimalType).intValue 
+  RollladenSZA.send(new PercentType(position))
+end 
 // put the west blinds down to 1/2 (equals 30%)
 rule "Increase counter"
 when
@@ -19,7 +87,7 @@ then
   val positionWL = (RollladenWZWL.state as DecimalType).intValue
   val positionWR = (RollladenWZWR.state as DecimalType).intValue
   
-  if (positionWL<30) RollladenWZWR.send(new PercentType(30))
+  if (positionWL<30) RollladenWZWL.send(new PercentType(30))
   if( TerrasseWest.state == "CLOSED" ){
     if (positionWR<30) RollladenWZWL.send(new PercentType(30))
   }	else

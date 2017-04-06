@@ -119,12 +119,12 @@ sitemap riffenzell label="Riffenzell" {
        Switch item=AutoMowerModeHomeAutoEOD  mappings=[auto="Auto", home="Home", eod="Feierabend", man="Manuell"] label="Modus" 
        Switch item=AutoMowerJob mappings=[1="1h", 2="2h", 3="3h", 4="4h"] label="Mähen" 
        
-        Group  item=AutoMowerGo  label="Remote" {
-           Slider item=AutoMowerLeft
-           Slider item=AutoMowerRight
-           Switch item=AutoMowerGo mappings=[1000="1s", 2000="2s", 3000="3s", 4000="4s"] 
     
-        }
+       Group  item=AutoMowerGo  label="Remote" {
+           Switch item=AutoMowerGo mappings=[ll="LL", l="L", r="R", rr="RR"] 
+           Switch item=AutoMowerGo mappings=[-1="-1"]         
+           Switch item=AutoMowerGo mappings=[1="1", 2="2", 3="3", 4="4"] 
+       }
     }
     
 

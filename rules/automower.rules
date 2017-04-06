@@ -23,7 +23,10 @@ when
 then
   logDebug("automower", "AutomowerRemote: Entering Rule with {}",receivedCommand.toString)
   
-  if( receivedCommand.toString != ""){
+ /* if( receivedCommand.toString == "1000"||
+  	  receivedCommand.toString == "2000"||
+  	  receivedCommand.toString == "3000"||
+  	  receivedCommand.toString == "4000"){
     var left = ((AutoMowerLeft.state as DecimalType).intValue - 50) * 2  // Normalize from 0 - 100 to -100 - 100
     var right = ((AutoMowerRight.state as DecimalType).intValue - 50) * 2  // Normalize from 0 - 100 to -100 - 100
  
@@ -35,6 +38,30 @@ then
 	  
 	logDebug("automower", "AutomowerRemote: Automower returned: {}", result)
     
+    AutoMowerGo.sendCommand("")
+  } */
+  
+  if( receivedCommand.toString == "1"){
+    sendHttpGetRequest("http://192.168.178.60/xml?cmd=direct&left=80&right=80&timeout=1000" )
+  } else  if( receivedCommand.toString == "2"){
+    sendHttpGetRequest("http://192.168.178.60/xml?cmd=direct&left=80&right=80&timeout=2300" )
+  } else  if( receivedCommand.toString == "3"){
+    sendHttpGetRequest("http://192.168.178.60/xml?cmd=direct&left=80&right=80&timeout=3600" )
+  } else  if( receivedCommand.toString == "4"){
+    sendHttpGetRequest("http://192.168.178.60/xml?cmd=direct&left=80&right=80&timeout=5000" )
+  } else  if( receivedCommand.toString == "ll"){
+    sendHttpGetRequest("http://192.168.178.60/xml?cmd=direct&left=-80&right=80&timeout=1000" )
+  } else  if( receivedCommand.toString == "l"){
+    sendHttpGetRequest("http://192.168.178.60/xml?cmd=direct&left=-50&right=50&timeout=1000" )
+  } else  if( receivedCommand.toString == "rr"){
+    sendHttpGetRequest("http://192.168.178.60/xml?cmd=direct&left=80&right=-80&timeout=1000" )
+  } else  if( receivedCommand.toString == "r"){
+    sendHttpGetRequest("http://192.168.178.60/xml?cmd=direct&left=50&right=-50&timeout=1000" )
+  } else  if( receivedCommand.toString == "-1"){
+    sendHttpGetRequest("http://192.168.178.60/xml?cmd=direct&left=-70&right=-70&timeout=1000" )
+  }
+  
+  if( receivedCommand.toString != ""){
     AutoMowerGo.sendCommand("")
   }
    
