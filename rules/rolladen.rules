@@ -89,7 +89,7 @@ then
   
   if (positionWL<30) RollladenWZWL.send(new PercentType(30))
   if( TerrasseWest.state == "CLOSED" ){
-    if (positionWR<30) RollladenWZWL.send(new PercentType(30))
+    if (positionWR<30) RollladenWZWR.send(new PercentType(30))
   }	else
   {
   	 oldStateTTWest = 30
