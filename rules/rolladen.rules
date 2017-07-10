@@ -226,7 +226,7 @@ end
 // timer closed the shutter --> reopen them
 rule "TTSuedSecurity"
 when 
-  Item RollladenWZWR changed
+  Item RollladenWZSMR changed
 then
   logDebug("Tuer", "TTSuedSecurity: Entering Rule")
   if( TerrasseSued.state == "OPEN" ){
