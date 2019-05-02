@@ -5,8 +5,8 @@ Strategies {
     default = everyMinute
 }
 
-Items {
-    // which data to be stored
-    HKTreppeActual     : strategy = everyMinute
-    HKWohnzimmerActual : strategy = everyMinute
-}
+//Items {
+//    // which data to be stored
+//    HKTreppeActual     : strategy = everyMinute
+//    HKWohnzimmerActual : strategy = everyMinute
+//}

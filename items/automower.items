@@ -26,7 +26,7 @@
 }
  */
 
-
+/*
 String AutoMowerStatus "Status [MAP(automowerinfo_status.map):%s]"		<grass>			{http="<[automowerCache:30000:JSONPATH($.status.status)]"}    
 String AutoMowerBattery "Batteriestatus (%)[%s]"						<battery>		{http="<[automowerCache:30000:JSONPATH($.status.battery)]"}
 String AutoMowerMode "Modus [MAP(automowerinfo_mode.map):%s]"			<movecontrol>	{http="<[automowerCache:30000:JSONPATH($.status.mode)]"}
@@ -42,3 +42,4 @@ String AutoMowerJob     "Mähen" <grass>
 Number AutoMowerLeft  "Linkes Rad"   <movecontrol>
 Number AutoMowerRight "Rechtes Rad"  <movecontrol>
 String AutoMowerGo    "Remote"         <heating>	
+*/

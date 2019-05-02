@@ -1,4 +1,4 @@
-import org.openhab.core.library.types.*
+//import org.openhab.core.library.types.*
 
 rule "Feedback"
 when 
@@ -10,7 +10,8 @@ then
 	   {
 	   	 Garage.sendCommand(ON) 
 	   } 
-	   say("Das Garagentor ist offen", "voicerss:deDE", "sonos:PLAY1:RINCON_949F3E07F2FE01400")
+//     WohnzimerRemind.sendCommand("Die Garage ist offen") 
+//	   say("Das Garagentor ist offen", "voicerss:deDE", "sonos:PLAY1:RINCON_949F3E07F2FE01400")
    }
 	if(Hoermann.state=="CLOSED")
 	{
@@ -18,7 +19,7 @@ then
 	   {
 	   	 Garage.sendCommand(OFF) 
 	   } 
-	   say("Das Garagentor ist geschlossen", "voicerss:deDE", "sonos:PLAY1:RINCON_949F3E07F2FE01400")
+//	   say("Das Garagentor ist geschlossen", "voicerss:deDE", "sonos:PLAY1:RINCON_949F3E07F2FE01400")
 	}
 end
 

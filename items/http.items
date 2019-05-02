@@ -1,7 +1,12 @@
-String Hoermann "Garagentor [MAP(garage.map):%s]" <garagedoor> {http=">[DOOPEN:GET:http://192.168.178.47/open] >[DOCLOSE:GET:http://192.168.178.47/close]"}
+Switch Schlafi "Schlafi" <light>  [ "Lighting" ] {http="<[http://shellyswitch-32bfe3/relay/0:60000:JS(shelly.js)] >[ON:GET:http://shellyswitch-32bfe3/relay/0?turn=on] >[OFF:GET:http://shellyswitch-32bfe3/relay/0?turn=off]"}
+
+Switch Bett "Bett" <light>  [ "Lighting" ] {http="<[http://shellyswitch-32bfe3/relay/1:60000:JS(shelly.js)] >[ON:GET:http://shellyswitch-32bfe3/relay/1?turn=on] >[OFF:GET:http://shellyswitch-32bfe3/relay/1?turn=off]"}
+
+
+String Hoermann "Garagentor [MAP(garage.map):%s]" <garagedoor> {http=">[DOOPEN:GET:http://192.168.178.96/open] >[DOCLOSE:GET:http://192.168.178.96/close]"}
 Switch Garage "Garagentor" <garagedoor> [ "Switchable" ]
 
-Switch LampeSchreibtisch "Schreibtischlampe" <light>  [ "Lighting" ] {http=">[ON:GET:http://192.168.178.58/on] >[OFF:GET:http://192.168.178.58/off]"}
+Switch LampeSchreibtisch "Schreibtisch Britta" <light>  [ "Lighting" ] {http=">[ON:GET:http://192.168.178.58/on] >[OFF:GET:http://192.168.178.58/off]"}
 
 String LichtButLed "Led Streifen" <light> 
 

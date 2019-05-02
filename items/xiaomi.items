@@ -1,0 +1,7 @@
+
+Switch  SchreibtischJohanna  "Schreibtisch Johanna"  <light> [ "Lighting" ] { channel="miio:generic:637a7c5d:power" }
+Switch  SchreibtischAlexander  "Schreibtisch Alexander"  <light> [ "Lighting" ] { channel="miio:generic:02F5887D:power" }
+
+
+
+ 

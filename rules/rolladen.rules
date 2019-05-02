@@ -6,7 +6,7 @@ var Number oldStateTTWest = 0
 var Number oldStateTTSued = 0
 
 // spots shall switch of after some time
-var Timer spotTimer = null  
+//var Timer spotTimer = null  
 
 
 // Update WZ items for Alexa
@@ -110,7 +110,8 @@ then
   logDebug("Tuer", "TUplightsOn: Door: {} Elevation: {}",TerrasseWest.state, elevation)
   
   if(( TerrasseWest.state == "OPEN" ) &&  
-  	 ( elevation < 0)){
+  	 ( elevation < 0) &&
+  	 ( now.getHourOfDay>18)){
   	 	
     GartenUplights.sendCommand( "ON" )
   } else
@@ -136,13 +137,14 @@ then
   
   if ((positionWL<70) && 
   	  (positionWR<70) &&
-  	  (elevation<0)){
+  	  (elevation<0) &&
+  	  (now.getHourOfDay>18)){
   	  	
        GartenSpotlight.sendCommand(ON)
-       spotTimer = createTimer(now.plusHours(6)) [|
-          GartenSpotlight.sendCommand(OFF)
-          spotTimer = null   // reset the timer
-       ] 	
+    //   spotTimer = createTimer(now.plusHours(6)) [|
+    //      GartenSpotlight.sendCommand(OFF)
+    //     spotTimer = null   // reset the timer
+ 	
   	  	
   } else  {
   	GartenSpotlight.sendCommand(OFF)

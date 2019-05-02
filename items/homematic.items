@@ -25,7 +25,7 @@ Switch  DAMinusFB { channel="homematic:HM-LC-Sw4-WM:a8faecaa:MEQ0498690:2#STATE"
 Switch  DAButMinus "Dunstabzug Minus" <fan> (KueDA)
 Switch  DAButAus "Dunstabzug Aus" <fan> (KueDA)
 
-Dimmer  LichtAlex "Alex [%d %%]" [ "Lighting" ]{ channel="homematic:HM-LC-Dim1TPBU-FM:a8faecaa:MEQ0395313:1#LEVEL" }
+Dimmer  LichtAlex "Alex [%d %%]" [ "Lighting" ]{ channel="homematic:HM-LC-Dim1TPBU-FM:acd8faecaa:PEQ1195886:1#LEVEL" }
 
 Switch  LichtArbeitszimmer  "Arbeitszimmer" <light> [ "Lighting" ] { channel="homematic:HM-LC-Sw1PBU-FM:a8faecaa:MEQ0988193:1#STATE" }
 
@@ -48,23 +48,6 @@ Switch  LichtWohnzimmer  "Wohnzimmer"  <light> [ "Lighting" ] { channel="homemat
 
 
 
-String HKTreppeValveState  "HK Treppe Status [%s]" <heating>                         (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#VALVE_STATE" }	 
-Number HKTreppeSetPoint    "HK Treppe Sollteperatur [%.1f °C]" <temperature>         (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#SET_POINT_TEMPERATURE" }	
-Dimmer HKTreppeLevel       "HK Treppe Ventil [%.0f %%]" <heating>                    (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#LEVEL" }	
-Number HKTreppeActual      "HK Treppe Isttemperatur [%.1f °C]" <temperature>         (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C9918E4B:1#ACTUAL_TEMPERATURE" }	
-
-String HKWohnzimmerValveState  "HK Wohnzimmer Status [%s]" <heating>                 (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#VALVE_STATE" }	 
-Number HKWohnzimmerSetPoint    "HK Wohnzimmer Sollteperatur [%.1f °C]" <temperature> (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#SET_POINT_TEMPERATURE" }	
-Dimmer HKWohnzimmerLevel       "HK Wohnzimmer Ventil [%.0f %%]" <heating>            (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#LEVEL" }	
-Number HKWohnzimmerActual      "HK Wohnzimmer Isttemperatur [%.1f °C]" <temperature> (WZHeating) { channel="homematic:HMIP-eTRV:a8faecaa:000393C98D0CEC:1#ACTUAL_TEMPERATURE" }	
-
-Number ThermostatWohnzimmerSetPoint    "Thermostat WZ Sollteperatur [%.1f °C]" <temperature> [ "TargetTemperature" ] { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#SET_POINT_TEMPERATURE" }	
-Number ThermostatWohnzimmerActual      "Thermostat WZ Isttemperatur [%.1f °C]" <temperature> [ "CurrentTemperature" ]{ channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#ACTUAL_TEMPERATURE" }	
-
-Switch PartyMode      "Party Mode" <heating>  { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#PARTY_MODE" }
-Number PartySetPoint  "Party SetPoint [%.1f °C]" <temperature>  { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#PARTY_SET_POINT_TEMPERATURE" }
-DateTime PartyTimeStart "Party Start [%1$tA, %1$td.%1$tm.%1$tY %1$tT]" <calendar>   { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#PARTY_TIME_START" }
-DateTime PartyTimeEnd     "Party End " <calendar>   { channel="homematic:HMIP-WTH:a8faecaa:000313C98CBC67:1#PARTY_TIME_END" }
 
 String TerrasseSued "Terrasse Süd [MAP(de.map):%s]"  <contact> { channel="homematic:HMIP-SWDO:a8faecaa:0000D3C9905B79:1#STATE" }
 String TerrasseWest "Terrasse West [MAP(de.map):%s]" <contact> { channel="homematic:HMIP-SWDO:a8faecaa:0000D3C98C97CE:1#STATE" }

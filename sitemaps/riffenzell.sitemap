@@ -25,36 +25,6 @@ sitemap riffenzell label="Riffenzell" {
            Slider item=RollladenWZSML
            Slider item=RollladenWZSL
         }
-         Group  item=HKWohnzimmerActual label="Heizung" {
-            Setpoint item=ThermostatWohnzimmerSetPoint 
-            Text item=ThermostatWohnzimmerActual   
-        
-            Text item=HKWohnzimmerSetPoint
-            Text item=HKTreppeSetPoint
-            Text item=HKWohnzimmerActual
-            Text item=HKTreppeActual
-            Text item=HKTreppeLevel
-            Text item=HKWohnzimmerLevel
-            
-            Switch item=PartyMode      
-            Setpoint item=PartySetPoint  
-            Text item=PartyTimeStart 
-            Text item=PartyTimeEnd   
-//            Chart item=HKWohnzimmerActual service="rrd4j" period=12h
-//            Chart item=HKTreppeActual service="rrd4j" period=12h
-
-            
-         //  Setpoint item=HKTreppeSetPoint step=0.5 minValue=15 maxValue=30
-         //  Setpoint item=HKTreppeSetPoint step=0.5 minValue=15 maxValue=30
-           
-            
-           
-          // Text     item=homematic_HMIP_eTRV_a8faecaa_000393C98D0CEC_1_ACTUAL_TEMPERATURE  label="Isttemperatur [%.1f °C]"
-          // Text   item=homematic_HMIP_eTRV_a8faecaa_000393C98D0CEC_1_LEVEL  label="Level [%.0f %%]"
-          // Setpoint item=homematic_HMIP_eTRV_a8faecaa_000393C98D0CEC_1_SET_POINT_TEMPERATURE label="Sollteperatur [%.1f °C]" step=1 minValue=15 maxValue=30
-          // Text     item=homematic_HMIP_eTRV_a8faecaa_000393C98D0CEC_1_VALVE_STATE label="Level [%s]"
-           
-        }
         
         Text item=TerrasseSued  
         Text item=TerrasseWest  
@@ -72,11 +42,15 @@ sitemap riffenzell label="Riffenzell" {
     }
     Frame label="Obere Zimmer" {
         Switch item=LichtJohanna
+        Switch item=SchreibtischJohanna
         Slider item=LichtAlex 
+        Switch item=SchreibtischAlexander
         Switch item=LichtFlur
         Switch item=LichtArbeitszimmer
         Switch item=LampeSchreibtisch
         Switch item=LichtSpielzimmer    
+        Switch item=Schlafi
+        Switch item=Bett
         Group  item=RollladenSZL  label="Rollläden" {
            Slider item=RollladenSZR
            Slider item=RollladenSZL
@@ -103,29 +77,29 @@ sitemap riffenzell label="Riffenzell" {
     	Switch item=Hoermann  mappings=[DOOPEN="/\\", DOCLOSE="\\/"]
     	Text item=Hoermann
     }       
-    Frame label="Automower Status" {
+//    Frame label="Automower Status" {
 
-       Text item=AutoMowerStatus 
-       Text item=AutoMowerBattery  valuecolor=[<30="red",<50="orange",>80="green"]
-       Text item=AutoMowerMode 
-       Text item=AutoMowerDuration 
-       Text item=AutoMowerHours 
-       Text item=AutoMowerWifi 
-       Text item=AutoMowerNextRunD   visibility=[AutoMowerMode==0]
-       Text item=AutoMowerNextRunT   visibility=[AutoMowerMode==0]
-    }
+//       Text item=AutoMowerStatus 
+//       Text item=AutoMowerBattery  valuecolor=[<30="red",<50="orange",>80="green"]
+//       Text item=AutoMowerMode 
+//       Text item=AutoMowerDuration 
+//       Text item=AutoMowerHours 
+//       Text item=AutoMowerWifi 
+//       Text item=AutoMowerNextRunD   visibility=[AutoMowerMode==0]
+//       Text item=AutoMowerNextRunT   visibility=[AutoMowerMode==0]
+//    }
 
-    Frame label="Automower Steuerung" {
-       Switch item=AutoMowerModeHomeAutoEOD  mappings=[auto="Auto", home="Home", eod="Feierabend", man="Manuell"] label="Modus" 
-       Switch item=AutoMowerJob mappings=[1="1h", 2="2h", 3="3h", 4="4h"] label="Mähen" 
+//    Frame label="Automower Steuerung" {
+//       Switch item=AutoMowerModeHomeAutoEOD  mappings=[auto="Auto", home="Home", eod="Feierabend", man="Manuell"] label="Modus" 
+//       Switch item=AutoMowerJob mappings=[1="1h", 2="2h", 3="3h", 4="4h"] label="Mähen" 
        
     
-       Group  item=AutoMowerGo  label="Remote" {
-           Switch item=AutoMowerGo mappings=[ll="LL", l="L", r="R", rr="RR"] 
-           Switch item=AutoMowerGo mappings=[-1="-1"]         
-           Switch item=AutoMowerGo mappings=[1="1", 2="2", 3="3", 4="4"] 
-       }
-    }
-    
+ //      Group  item=AutoMowerGo  label="Remote" {
+ //          Switch item=AutoMowerGo mappings=[ll="LL", l="L", r="R", rr="RR"] 
+  //         Switch item=AutoMowerGo mappings=[-1="-1"]         
+  //         Switch item=AutoMowerGo mappings=[1="1", 2="2", 3="3", 4="4"] 
+//       }
+//    }
+
 
 }
