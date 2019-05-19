@@ -1,0 +1,5 @@
+Switch  WasserVorgarten "Wasser Vorgarten" <faucet> [ "Switchable" ] { channel="opensprinkler:http:15260b14:station01" }
+Switch  WasserRasen "Wasser Rasen" <faucet> [ "Switchable" ] { channel="opensprinkler:http:15260b14:station02" }
+Switch  WasserBeet "Wasser Beet" <faucet> [ "Switchable" ] { channel="opensprinkler:http:15260b14:station03" }
+Switch  WasserTropfschlauch "Wasser Tropfschlauch" <faucet> [ "Switchable" ] { channel="opensprinkler:http:15260b14:station04" }
+

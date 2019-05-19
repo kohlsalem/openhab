@@ -77,6 +77,13 @@ sitemap riffenzell label="Riffenzell" {
     	Switch item=Hoermann  mappings=[DOOPEN="/\\", DOCLOSE="\\/"]
     	Text item=Hoermann
     }       
+   Frame label="Bewässerung" {
+       Switch item=WasserVorgarten    label="Wassersteckdose Vorgarten"
+       Switch item=WasserRasen     label="Rasensprenger"
+       Switch item=WasserBeet     label="Bewässerung Gemüsebeet"
+       Switch item=WasserTropfschlauch     label="Tropfschlauch (Tomaten)"
+   }
+
 //    Frame label="Automower Status" {
 
 //       Text item=AutoMowerStatus 
