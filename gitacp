@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /opt/openhab/conf
-git add  .
+git add -A .
 #git commit -a update 
-git commit
-git push
+git commit -m "Update Config"
+git push 
