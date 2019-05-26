@@ -51,6 +51,7 @@ sitemap riffenzell label="Riffenzell" {
         Switch item=LichtSpielzimmer    
         Switch item=Schlafi
         Switch item=Bett
+        Switch item=Waschraum
         Group  item=RollladenSZL  label="Rollläden" {
            Slider item=RollladenSZR
            Slider item=RollladenSZL

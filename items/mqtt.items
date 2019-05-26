@@ -1,0 +1,4 @@
+Switch Waschraum "Waschraum" <light>  [ "Lighting" ] { mqtt=">[mymqtt:shellies/shelly1-059323/relay/0/command:command:*:MAP(shelly.map)]     ,<[mymqtt:shellies/shelly1-059323/relay/0:state:MAP(shelly.map)]" }
+Switch Schlafi "Schlafi" <light>  [ "Lighting" ]     { mqtt=">[mymqtt:shellies/shellyswitch-32BFE3/relay/0/command:command:*:MAP(shelly.map)],<[mymqtt:shellies/shellyswitch-32BFE3/relay/0:state:MAP(shelly.map)]" }
+Switch Bett "Bett" <light>        [ "Lighting" ]     { mqtt=">[mymqtt:shellies/shellyswitch-32BFE3/relay/1/command:command:*:MAP(shelly.map)],<[mymqtt:shellies/shellyswitch-32BFE3/relay/1:state:MAP(shelly.map)]" }
+

@@ -6,4 +6,5 @@ ERROR=Fehler Torsteuerung
 CLOSED=Tor Geschlossen
 OPENING=Tor oeffnet
 DOCLOSE=Sende Schliessen
--=Kommunikationsfehler?
+-=Kommunikationsfehler
+NULL=NULL
