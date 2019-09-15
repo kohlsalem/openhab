@@ -9,6 +9,31 @@ var Number oldStateTTSued = 0
 //var Timer spotTimer = null  
 
 
+//send updates to Home Pilot
+rule "rule name"
+when
+  Member of GRollAll received command
+then
+   logDebug("rolershutter","rolershutter " + triggeringItem.name + " recieved update" + receivedCommand )
+   var String myUrl = ""
+   switch(triggeringItem.name) {
+    case "RollladenWZSL": { myUrl = "http://homepilot/devices/10001"} 
+    case "RollladenWZSR": { myUrl = "http://homepilot/devices/10002"} 
+    case "RollladenWZSML": { myUrl = "http://homepilot/devices/10004"} 
+    case "RollladenWZSMR": { myUrl = "http://homepilot/devices/10005"}     
+    case "RollladenWZWR": { myUrl = "http://homepilot/devices/10006"} 
+    case "RollladenWZWL": { myUrl = "http://homepilot/devices/10007"} 
+    case "RollladenSZR": { myUrl = "http://homepilot/devices/10008"} 
+    case "RollladenSZL": { myUrl = "http://homepilot/devices/10009"} 
+    case "RollladenSZA": { myUrl = "http://homepilot/devices/10010"} 
+   }
+  
+  var String myData = '{"name":"GOTO_POS_CMD","value":"' + receivedCommand  + '"}'
+  logDebug("rolershutter","Sending put "+ myData + " to " + myUrl)
+  sendHttpPutRequest(myUrl, "application/x-www-form-urlencoded", myData)
+end
+
+
 // Update WZ items for Alexa
 rule "SetWohnzimmer"
 when

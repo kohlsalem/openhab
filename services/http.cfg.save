@@ -18,7 +18,8 @@
 #<id2>.updateInterval=
 
 #Homepilot
-homepilotCache.url=http://homepilot/v4/devices
+homepilotCache.url=http://homepilot/deviceajax.do?devices=1
+
 homepilotCache.updateInterval=20000
 
 #
