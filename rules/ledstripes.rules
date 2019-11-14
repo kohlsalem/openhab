@@ -4,7 +4,7 @@ var Timer timerGuteNacht = null
 
 rule "LEDStripesGuteNacht"
 when
-	Item LichtCouchtisch received update or
+//	Item LichtCouchtisch received update or
 	Item LichtEsstisch received update
 	
 then
