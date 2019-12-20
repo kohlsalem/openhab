@@ -6,7 +6,7 @@ Switch WZTaster2S "Taster Leselampe"  {channel="homematic:HM-PB-6-WM55:a8faecaa:
 Switch WZTaster2L "Taster Leselampe Long"  {channel="homematic:HM-PB-6-WM55:a8faecaa:NEQ0104690:2#PRESS_LONG"}
 
 	
-Dimmer  LichtCouchtisch "Sofa [%d %%]" [ "Lighting" ] { channel="homematic:HmIP-BDT:a8faecaa:0008DA498E78FB:3#LEVEL" }
+Dimmer  LichtCouchtisch "Sofa [%d %%]" [ "Lighting" ] { channel="homematic:HmIP-BDT:a8faecaa:0008DA498E78FB:4#LEVEL" }
 
 //oldDimmer  LichtCouchtisch "Sofa [%d %%]" [ "Lighting" ] { channel="homematic:HM-LC-Dim1TPBU-FM:a8faecaa:MEQ0168594:1#LEVEL" }
 
@@ -29,7 +29,7 @@ Switch  DAButAus "Dunstabzug Aus" <fan> (KueDA)
 
 Dimmer  LichtAlex "Alex [%d %%]" [ "Lighting" ]{ channel="homematic:HM-LC-Dim1TPBU-FM:acd8faecaa:PEQ1195886:1#LEVEL" }
 
-Switch  LichtArbeitszimmer  "Arbeitszimmer" <light> [ "Lighting" ] { channel="homematic:HM-LC-Sw1PBU-FM:a8faecaa:MEQ0988193:1#STATE" }
+Switch  LichtArbeitszimmer  "Arbeitszimmer" <light> [ "Lighting" ] { channel="homematic:HmIP-BSM:a8faecaa:00085A49930E31:4#STATE" }
 
 Switch  LichtFlur  "Flur"   <light>  [ "Lighting" ] { channel="homematic:HM-LC-Sw1-DR:a8faecaa:MEQ1565505:1#STATE" }
 
