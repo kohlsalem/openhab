@@ -3,3 +3,7 @@ Switch Waschraum "Waschraum" <light>  [ "Lighting" ] { channel="mqtt:topic:Gener
 
 Switch Schlafi "Schlafi" <light>  [ "Lighting" ]     { channel="mqtt:topic:GenericMQTT:SZLicht" }
 Switch Bett "Bett" <light>        [ "Lighting" ]     { channel="mqtt:topic:GenericMQTT:SZBett" }
+
+
+Switch AZLedDown "Arbeitszimmer LED Unten" <light>        [ "Lighting" ]     { channel="mqtt:topic:GenericMQTT:AzLedDown" }
+Switch AZLedUp "Arbeitszimmer LED Oben" <light>        [ "Lighting" ]     { channel="mqtt:topic:GenericMQTT:AzLedUp" }

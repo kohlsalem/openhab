@@ -12,9 +12,12 @@ String LichtButLed "Led Streifen" <light>
 
 Dimmer Candle "Kerzen [%d]" <fire> (WZLightOther) {http="<[http://candle:60000:JSONPATH($.b)] >[*:GET:http://candle/?b=%2$s] >[ON:GET:http://candle/?b=100] >[OFF:GET: http://candle/?b=0]"}
 
-Dimmer LedCouch "Led Couch [%d]" (WZLightOther){http="<[http://ledcouch:60000:JSONPATH($.b)] >[*:GET:http://ledcouch/?b=%2$s] >[ON:GET:http://ledcouch/?b=100] >[OFF:GET: http://ledcouch/?b=0]"}
+//Dimmer LedCouch "Led Couch [%d]" (WZLightOther){http="<[http://ledcouch:60000:JSONPATH($.b)] >[*:GET:http://ledcouch/?b=%2$s] >[ON:GET:http://ledcouch/?b=100] >[OFF:GET: http://ledcouch/?b=0]"}
+//Dimmer LedTheke "Led Theke [%d]" (WZLightOther){http="<[http://ledtheke:60000:JSONPATH($.b)] >[*:GET:http://ledtheke/?b=%2$s] >[ON:GET:http://ledtheke/?b=100] >[OFF:GET: http://ledtheke/?b=0]"}
 
-Dimmer LedTheke "Led Theke [%d]" (WZLightOther){http="<[http://ledtheke:60000:JSONPATH($.b)] >[*:GET:http://ledtheke/?b=%2$s] >[ON:GET:http://ledtheke/?b=100] >[OFF:GET: http://ledtheke/?b=0]"}
+Switch LedCouch "Led Couch" (WZLightOther) { channel="mqtt:topic:GenericMQTT:LEDWand" }
+Switch LedTheke "Led Theke" (WZLightOther) { channel="mqtt:topic:GenericMQTT:LEDTheke" }
+
 
 // "WZSL": 10001 "name": "WZ Süd Links",        
 // "WZSR": 10002 "name": "WZ Süd Rechts",
@@ -41,6 +44,9 @@ Rollershutter RollladenWZWL "West Links" (GRollAll,GRollWZ,GRollWZW)         {ht
 Rollershutter RollladenSZR "Schlafzimmer Rechts" (GRollAll,GRollOG,GRollSZ)  {http="<[homepilotCache:20000:JSONPATH($.devices[?(@.did==10008)].statusesMap.Position)] "} 
 Rollershutter RollladenSZL "Schlafzimmer Links" (GRollAll,GRollOG,GRollSZ)   {http="<[homepilotCache:20000:JSONPATH($.devices[?(@.did==10009)].statusesMap.Position)] "}
 Rollershutter RollladenSZA "Schlafzimmer Alex" (GRollAll,GRollOG)            {http="<[homepilotCache:20000:JSONPATH($.devices[?(@.did==10010)].statusesMap.Position)] "}
+
+Number RollladenWZSMRE "Süd Mitte Rechts" {http="<[homepilotCache:20000:JSONPATH($.devices[?(@.did==10005)].hasErrors)] "}
+
 
 Dimmer RollladenSZAlexa "Rollladen Schlafzimmer [%d %%]" [ "Lighting" ]
 Dimmer RollladenWZAlexa "Rollladen Wohnzimmer [%d %%]" [ "Lighting" ] 

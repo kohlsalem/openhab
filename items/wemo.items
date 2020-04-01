@@ -1,4 +1,4 @@
-Switch LichtLeselampe "Wandlampe" <light> [ "Lighting" ] { channel="wemo:socket:Socket-1_0-221517K1100004:state" }	
+Switch LichtLeselampe "Wandlampe" <light> [ "Lighting" ]  { channel="mqtt:topic:GenericMQTT:WZLeselampe" }	
 String LichtButLeselampe "Wandlampe" <light> 
 
 

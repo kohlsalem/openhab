@@ -27,7 +27,7 @@ Switch  DAMinusFB { channel="homematic:HM-LC-Sw4-WM:a8faecaa:MEQ0498690:2#STATE"
 Switch  DAButMinus "Dunstabzug Minus" <fan> (KueDA)
 Switch  DAButAus "Dunstabzug Aus" <fan> (KueDA)
 
-Dimmer  LichtAlex "Alex [%d %%]" [ "Lighting" ]{ channel="homematic:HM-LC-Dim1TPBU-FM:acd8faecaa:PEQ1195886:1#LEVEL" }
+Dimmer  LichtAlex "Alex [%d %%]" [ "Lighting" ]{ channel="homematic:HM-LC-Dim1TPBU-FM:a8faecaa:PEQ1195886:1#LEVEL" }
 
 Switch  LichtArbeitszimmer  "Arbeitszimmer" <light> [ "Lighting" ] { channel="homematic:HmIP-BSM:a8faecaa:00085A49930E31:4#STATE" }
 
